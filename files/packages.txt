@@ -33,3 +33,16 @@ ttf-ms-win8-1
 ttf-ms-win8-2
 ttf-ms-win10-1
 ttf-ms-win10-2
+fastfetch
+btop
+
+######### AUDIO
+pipewire
+pipewire-pulse
+pavucontrol
+pulseaudio
+pulseaudio-module-bluetooth
+pamixer
+pulseaudio-equalizer
+#alsa-utils
+volumeicon
