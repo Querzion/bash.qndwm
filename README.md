@@ -39,8 +39,8 @@ A more detailed list is the actual (~/bash.lazy-dwm/files/packages.txt)
   - Get Yourself a VM Hypervisor >> https://www.qemu.org/ <3 | Guide for QEMU/KVM install (Scroll Down).
   - Create a VM >> https://www.youtube.com/watch?v=jLRmVNWOrgo
   - Boot the Virtual Machine with the ISO... WHY DID I INSTALL VENTOY THEN? (Use the stick on Bare Metal.)
-  - The Arch Linux is on the command line now? Write "archinstall". (No added Desktop from here.)
-  - Choose Grub. . . ;D Cause that will be themed.
+  - The Arch Linux is on the command line now? Write "archinstall". https://averagelinuxuser.com/arch-linux-install-automatically/
+  - Choose Grub. . . ;D Cause that will be themed, and skip installing a DE.
   - Set it up as you like it, but in "Additional Packages" write "git". (It's needed!)
     
 ![image](https://github.com/user-attachments/assets/c4c49299-8520-4bc4-b6d2-94762f309896)
