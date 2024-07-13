@@ -2,6 +2,10 @@
 rofi
 feh
 scrot
+duf
+unzip
+variety
+arcolinux-tweak-tool-git
 
 ######### System
 xorg
@@ -22,6 +26,9 @@ autoconf-archive
 slim
 slim-themes
 archlinux-themes-slim
+xbindkeys
+wget
+fontconfig
 ttf-ms-win8-1
 ttf-ms-win8-2
 ttf-ms-win10-1
