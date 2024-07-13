@@ -35,6 +35,7 @@ ttf-ms-win10-1
 ttf-ms-win10-2
 fastfetch
 btop
+nim
 
 ######### AUDIO
 pipewire
