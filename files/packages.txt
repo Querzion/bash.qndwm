@@ -3,7 +3,7 @@ rofi
 feh
 scrot
 
-######### 'Drivers'
+######### System
 xorg
 xorg-xinit
 xorg-server
