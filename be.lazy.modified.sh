@@ -354,9 +354,8 @@ if [ "$apply_all_patches" = "y" ] || [ "$apply_all_patches" = "Y" ]; then
     done < "$APP_CONFIG_FILE"
 fi
 
+# Create startup script and update .xinitrc
 create_startup_script
-
-# Update .xinitrc
 update_xinitrc
 
 # Create session file for display manager
