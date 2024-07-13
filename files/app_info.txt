@@ -1,0 +1,13 @@
+###
+###  This list incorporates dwm applications only, but if you want something else installed
+###  you just have to add it here, and it might work as it does for the other files here. ;P
+###
+###  !!! Commenting will skipp the install, more then one space will corrupt the install.
+###
+
+dwm (Dynamic Window Manager) https://git.suckless.org/dwm
+dmenu (Dynamic Menu) https://git.suckless.org/dmenu
+st (Suckless Terminal) https://git.suckless.org/st
+dwmblocks (Status Bar Tool) https://github.com/torrinfail/dwmblocks
+nnn (Terminal File-Manager) https://github.com/jarun/nnn
+slstatus (Simple Status Bar) https://github.com/reuckert/slstatus
