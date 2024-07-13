@@ -3,7 +3,7 @@
 ###
 ###  This script downloads and installs multiple applications specified from a txt file (../files/app_info.txt),
 ###  applies patches that are added and uncommented in a txt file (../files/patches.txt), 
-###  creates a startup script that is placed in (~/.config/wm/start_apps.sh), 
+###  creates a startup script that is placed in (~/.config/wm/$QnDWM_FILE), 
 ###  and updates .xinitrc to include this startup script (~/.xinitrc).
 ###
 
@@ -21,9 +21,11 @@ USER="$(whoami)"
 APP_CONFIG_FILE="app_info.txt"
 PATCH_CONFIG_FILE="patches.txt"
 SESSION_NAME="QnDWM"
+SESSION_FILE_NAME="qndwm.session"
+QnDWM_FILE="run.qndwm.sh"
 
 ################################################################### FILE & FOLDER PATHS
-FOLDER="$HOME/bash.lazy-dwm"
+FOLDER="$HOME/bash.qndwm"
 LOCATION="$FOLDER/files"
 INSTALL_LOCATION="$HOME/.config/wm"
 BACKUP_DIR="$INSTALL_LOCATION/backups"
@@ -178,7 +180,7 @@ patch_APP() {
 }
 
 create_startup_script() {
-    STARTUP_SCRIPT="$HOME/.config/wm/start_apps.sh"
+    STARTUP_SCRIPT="$INSTALL_LOCATION/$QnDWM_FILE"
     
     if [[ ! -f $STARTUP_SCRIPT ]]; then
         echo "#!/bin/bash" > $STARTUP_SCRIPT
@@ -204,20 +206,12 @@ update_xinitrc() {
         echo "#!/bin/bash" > "$XINITRC"
     fi
 
-    # Check if startup script is already referenced
-    if ! grep -q "start_apps.sh" "$XINITRC"; then
-        echo "bash $HOME/.config/wm/start_apps.sh" >> "$XINITRC"
-        print_message $GREEN "Added startup script to $XINITRC."
-    else
-        print_message $YELLOW "Startup script already present in $XINITRC."
-    fi
-
     # Ensure dwm is the default session
-    if ! grep -q "DEFAULT_SESSION=startdwm" "$XINITRC"; then
-        echo "DEFAULT_SESSION=startdwm" >> "$XINITRC"
+    if ! grep -q "DEFAULT_SESSION=$SESSION_NAME" "$XINITRC"; then
+        echo "DEFAULT_SESSION=$SESSION_NAME" >> "$XINITRC"
         echo "case \$1 in" >> "$XINITRC"
-        echo "  dwm)" >> "$XINITRC"
-        echo "    exec dwm" >> "$XINITRC"
+        echo "  qndwm)" >> "$XINITRC"
+        echo "    exec $INSTALL_LOCATION/$QnDWM_FILE" >> "$XINITRC"
         echo "    ;;" >> "$XINITRC"
         echo "  anotherdesktop)" >> "$XINITRC"
         echo "    exec startanotherdesktop" >> "$XINITRC"
@@ -226,6 +220,14 @@ update_xinitrc() {
         echo "    exec \$DEFAULT_SESSION" >> "$XINITRC"
         echo "    ;;" >> "$XINITRC"
         echo "esac" >> "$XINITRC"
+    fi
+
+    # Check if startup script is already referenced
+    if ! grep -q "$QnDWM_FILE" "$XINITRC"; then
+        echo "bash $INSTALL_LOCATION/$QnDWM_FILE" >> "$XINITRC"
+        print_message $GREEN "Added startup script to $XINITRC."
+    else
+        print_message $YELLOW "Startup script is present in $XINITRC."
     fi
 
     # Make .xinitrc executable
@@ -260,13 +262,13 @@ theme_grub() {
 }
 
 create_session_file() {
-    SESSION_FILE="/usr/share/xsessions/$SESSION_NAME"
+    SESSION_FILE="/usr/share/xsessions/$SESSION_FILE_NAME"
     
     if [[ ! -f $SESSION_FILE ]]; then
         echo "[Desktop Entry]" > $SESSION_FILE
         echo "Name=$SESSION_NAME" >> $SESSION_FILE
         echo "Comment=Dynamic Window Manager" >> $SESSION_FILE
-        echo "Exec=$HOME/.config/wm/start_apps.sh" >> $SESSION_FILE
+        echo "Exec=$INSTALL_LOCATION/$QnDWM_FILE" >> $SESSION_FILE
         echo "Type=Application" >> $SESSION_FILE
         echo "X-LightDM-DesktopName=$SESSION_NAME" >> $SESSION_FILE
         echo "DesktopNames=$SESSION_NAME" >> $SESSION_FILE
@@ -279,32 +281,39 @@ create_session_file() {
 }
 
 ################################################################### MAIN LOGIC
+
+# INSTALLS WHAT'S ADDED TO - packages.txt
 prerequisites
 
+#    FILE EXISTENCE CHECK - ~/bash.qndwm/files/app_info.txt
 if [[ ! -f "$APP_CONFIG_FILE" ]]; then
     print_message $RED "Error: Application configuration file $APP_CONFIG_FILE not found."
     exit 1
 fi
 
+#    FILE EXISTENCE CHECK - ~/bash.qndwm/files/patches.txt
 if [[ ! -f "$PATCH_CONFIG_FILE" ]]; then
     print_message $RED "Error: Patch configuration file $PATCH_CONFIG_FILE not found."
     exit 1
 fi
 
+#    TOOL SCRIPT
 while IFS= read -r line || [[ -n "$line" ]]; do
     APP=$(echo $line | cut -d' ' -f1)
     DESCRIPTION=$(echo $line | cut -d' ' -f2- | rev | cut -d' ' -f2- | rev)
     FROM_HERE=$(echo $line | awk '{print $NF}')
-
+    #     INSTALLS APPLICATION - ~/bash.qndwm/files/app_info.txt
     install_APP "$APP" "$DESCRIPTION" "$FROM_HERE"
 
     read -p "Do you want to configure $APP? (y/n): " CHOICE2
     if [ "$CHOICE2" = "y" ] || [ "$CHOICE2" = "Y" ]; then
+        #    COPIES CONFIG FILES - ~/bash.qndwm/files/configurations
         configure_APP "$APP" "$DESCRIPTION"
     fi
 
     read -p "Do you want to patch $APP? (y/n): " CHOICE3
     if [ "$CHOICE3" = "y" ] || [ "$CHOICE3" = "Y" ]; then
+        #    APPLY PATCHES - ~/bash.qndwm/files/patches.txt
         patch_APP "$APP" "$DESCRIPTION"
     fi
 
