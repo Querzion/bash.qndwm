@@ -45,10 +45,14 @@ PURPLE='\033[0;35m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+
 ############################### SETTINGS
+
 USER="$(whoami)"
 APP_CONFIG_FILE="app_info.txt"
 PATCH_CONFIG_FILE="patches.modified.txt"
+SESSION_NAME="dwm-q.desktop"
+
 
 ################################################################### FILE & FOLDER PATHS
 ############ FILE & FOLDER PATHS
@@ -60,6 +64,7 @@ LOCATION="$HOME/$FOLDER/files"
 # Installation Path
 INSTALL_LOCATION="$HOME/.config/wm"
 BACKUP_DIR="$INSTALL_LOCATION/backups"
+
 
 ################################################################### FUNCTIONS
 ############ FUNCTIONS
@@ -294,6 +299,26 @@ update_xinitrc() {
         print_message $YELLOW "Startup script already present in $XINITRC."
     fi
 }
+
+create_session_file() {
+    SESSION_FILE="/usr/share/xsessions/$SESSION_NAME"
+    
+    if [[ ! -f $SESSION_FILE ]]; then
+        echo "[Desktop Entry]" > $SESSION_FILE
+        echo "Name=LazyDWM" >> $SESSION_FILE
+        echo "Comment=Dynamic Window Manager" >> $SESSION_FILE
+        echo "Exec=$HOME/.config/wm/start_apps.sh" >> $SESSION_FILE
+        echo "Type=Application" >> $SESSION_FILE
+        echo "X-LightDM-DesktopName=LazyDWM" >> $SESSION_FILE
+        echo "DesktopNames=LazyDWM" >> $SESSION_FILE
+        echo "X-Ubuntu-Gettext-Domain=lightdm" >> $SESSION_FILE
+        
+        print_message $GREEN "Created session file at $SESSION_FILE."
+    else
+        print_message $YELLOW "Session file already exists at $SESSION_FILE."
+    fi
+}
+
 
 ################################################################### MAIN LOGIC
 ############ MAIN LOGIC
