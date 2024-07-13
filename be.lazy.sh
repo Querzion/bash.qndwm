@@ -49,8 +49,8 @@ PATCH_CONFIG_FILE="patches.txt"
 ############ FILE & FOLDER PATHS
 
 # Script Locations
-FOLDER="bash.lazy-dwm"
-LOCATION="$HOME/$FOLDER/files"
+FOLDER="$HOME/bash.lazy-dwm"
+LOCATION="$FOLDER/files"
 
 # Installation Path
 INSTALL_LOCATION="$HOME/.config/wm"
@@ -58,6 +58,49 @@ BACKUP_DIR="$INSTALL_LOCATION/backups"
 
 ################################################################### FUNCTIONS
 ############ FUNCTIONS
+
+prerequisites() {
+    # Define the file location
+    FILE_LOCATION="$LOCATION/packages.txt"
+
+    # Check if packages.txt exists
+    if [[ ! -f "$FILE_LOCATION" ]]; then
+        echo -e "${RED}packages.txt file not found at $FILE_LOCATION!${NC}"
+        exit 1
+    fi
+
+    # Function to check if a package is installed
+    is_installed() {
+        pacman -Qs "$1" &> /dev/null
+    }
+
+    # Update package database
+    echo -e "${YELLOW}Updating package database...${NC}"
+    sudo pacman -Sy
+
+    # Read the packages from packages.txt and install if not already installed
+    while read -r line; do
+        # Skip comments and empty lines
+        [[ "$line" =~ ^#.*$ ]] || [[ -z "$line" ]] && continue
+
+        # Install the package if not already installed
+        if ! is_installed "$line"; then
+            echo -e "${YELLOW}Installing $line...${NC}"
+            sudo pacman -S --noconfirm "$line"
+            if is_installed "$line"; then
+                echo -e "${GREEN}$line successfully installed.${NC}"
+            else
+                echo -e "${RED}Failed to install $line.${NC}"
+            fi
+        else
+            echo -e "${GREEN}$line is already installed.${NC}"
+        fi
+    done < "$FILE_LOCATION"
+
+    echo -e "${GREEN}All packages processed.${NC}"
+}
+
+
 
 print_message() {
     color=$1
@@ -205,6 +248,9 @@ update_xinitrc() {
 
 ################################################################### MAIN LOGIC
 ############ MAIN LOGIC
+
+prerequisites
+
 
 if [[ ! -f "$APP_CONFIG_FILE" ]]; then
     print_message $RED "Error: Application configuration file $APP_CONFIG_FILE not found."
