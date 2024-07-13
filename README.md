@@ -12,6 +12,7 @@ This is a lazy install script.
   - (pacman) feh ---------- (Commandline Wallpaper Handler)
   - (pacman) scrot -------- (Commandline Screenshot Utility)
   - (pacman) slim --------- (Login Manager)
+# A more detailed list is the actual (~/bash.lazy-dwm/files/packages.txt)
     
 ## Changes 
   - The .xinitrc file.
@@ -40,8 +41,6 @@ This is a lazy install script.
   - libxfixes
   - libxinerama
   - autoconf-archive
-  - slim-themes
-  - archlinux-themes-slim
 
 ### Info
 If there are more then one user on the computer and you want everyone to be able to use the same dwm change the install directory to (/usr/src)
