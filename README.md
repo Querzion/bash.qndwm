@@ -16,7 +16,7 @@ This is a lazy install script.
 ## Changes 
   - The .xinitrc file.
   - Creates a bash autorun script. (~/.config/vm/autorun.sh)
-  - Creates a session file. (/usr/share/xsessions/dwm-q.desktop)
+  - Creates a session file. (/usr/share/xsessions/dwm-q.desktop) !(SLiM doesn't need it.)
   - The .bashrc file. (Makes a backup and copies over a new one)
 
 ## Is able to 
