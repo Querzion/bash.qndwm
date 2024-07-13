@@ -14,6 +14,7 @@ after the alternatively use of the "archinstall" script.
   - (pacman) feh ---------- (Commandline Wallpaper Handler)
   - (pacman) scrot -------- (Commandline Screenshot Utility)
   - (pacman) slim --------- (Login Manager)
+  - (git) nlogout --------- (Logout Applet)
 
 A more detailed list is the actual (~/bash.qndwm/files/packages.txt)
     
