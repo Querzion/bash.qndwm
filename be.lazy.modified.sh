@@ -48,13 +48,13 @@ NC='\033[0m' # No Color
 ############################### SETTINGS
 USER="$(whoami)"
 APP_CONFIG_FILE="app_info.txt"
-PATCH_CONFIG_FILE="patches.txt"
+PATCH_CONFIG_FILE="patches.modified.txt"
 
 ################################################################### FILE & FOLDER PATHS
 ############ FILE & FOLDER PATHS
 
 # Script Locations
-FOLDER="bash.dwm-arch.startup"
+FOLDER="bash.lazy-dwm"
 LOCATION="$HOME/$FOLDER/files"
 
 # Installation Path
