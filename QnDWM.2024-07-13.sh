@@ -20,6 +20,7 @@ NC='\033[0m' # No Color
 USER="$(whoami)"
 APP_CONFIG_FILE="app_info.txt"
 PATCH_CONFIG_FILE="patches.txt"
+SESSION_NAME="QnDWM"
 
 ################################################################### FILE & FOLDER PATHS
 FOLDER="$HOME/bash.lazy-dwm"
@@ -258,6 +259,25 @@ theme_grub() {
     print_message $GREEN "GRUB configured and updated."
 }
 
+create_session_file() {
+    SESSION_FILE="/usr/share/xsessions/$SESSION_NAME"
+    
+    if [[ ! -f $SESSION_FILE ]]; then
+        echo "[Desktop Entry]" > $SESSION_FILE
+        echo "Name=$SESSION_NAME" >> $SESSION_FILE
+        echo "Comment=Dynamic Window Manager" >> $SESSION_FILE
+        echo "Exec=$HOME/.config/wm/start_apps.sh" >> $SESSION_FILE
+        echo "Type=Application" >> $SESSION_FILE
+        echo "X-LightDM-DesktopName=$SESSION_NAME" >> $SESSION_FILE
+        echo "DesktopNames=$SESSION_NAME" >> $SESSION_FILE
+        echo "X-Ubuntu-Gettext-Domain=lightdm" >> $SESSION_FILE
+        
+        print_message $GREEN "Created session file at $SESSION_FILE."
+    else
+        print_message $YELLOW "Session file already exists at $SESSION_FILE."
+    fi
+}
+
 ################################################################### MAIN LOGIC
 prerequisites
 
@@ -300,5 +320,8 @@ configure_slim
 
 # Theme GRUB
 theme_grub
+
+# Create session file for display manager
+create_session_file
 
 print_message $GREEN "All tasks completed."
