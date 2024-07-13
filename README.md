@@ -11,6 +11,7 @@ This is a lazy install script.
   - (pacman) rofi --------- (Application Launcher)
   - (pacman) feh ---------- (Commandline Wallpaper Handler)
   - (pacman) scrot -------- (Commandline Screenshot Utility)
+  - (pacman) slim --------- (Login Manager)
     
 ## Changes 
   - The .xinitrc file.
