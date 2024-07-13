@@ -236,8 +236,6 @@ update_xinitrc() {
 }
 
 configure_slim() {
-    # Install SLiM and its themes
-    sudo pacman -S --noconfirm slim slim-themes archlinux-themes-slim
 
     # Enable SLiM to start at boot
     sudo systemctl enable slim
