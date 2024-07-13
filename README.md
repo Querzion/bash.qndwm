@@ -12,6 +12,7 @@ This is a lazy install script.
   - (pacman) feh ---------- (Commandline Wallpaper Handler)
   - (pacman) scrot -------- (Commandline Screenshot Utility)
   - (pacman) slim --------- (Login Manager)
+
 A more detailed list is the actual (~/bash.lazy-dwm/files/packages.txt)
     
 ## Changes 
