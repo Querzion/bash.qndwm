@@ -1,3 +1,8 @@
+### TO DO
+#  https://github.com/arcolinux/arcolinux-nlogout/tree/main/etc/skel/.config/nlogout
+# nlogout (Logout Manager) https://github.com/DrunkenAlcoholic/nlogout.git
+
+
 ########## Applications
 rofi
 feh
