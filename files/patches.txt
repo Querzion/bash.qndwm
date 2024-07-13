@@ -1,0 +1,191 @@
+##################################################### DWM PATCHES
+########### DWM PATCHES
+
+# Dynamic tagging: Enables dynamic tags to manage workspaces more flexibly.
+#dwm https://dwm.suckless.org/patches/pertag/dwm-pertag-20200729-61bb8b2.diff
+
+# Fibonacci layout: Adds Fibonacci layout option for tiling.
+#dwm https://dwm.suckless.org/patches/fibonacci/dwm-fibonacci-20210514-b3d0e1b.diff
+
+# Fullscreen toggle: Allows easy toggling of fullscreen state for clients.
+#dwm https://dwm.suckless.org/patches/fullscreen/dwm-fullscreen-20200510-bc93ef5.diff
+
+# Status monitor: Integrates a status monitor for better workspace visibility.
+#dwm https://dwm.suckless.org/patches/status2/dwm-status2-20210915-ff3e1f4.diff
+
+# Swallowing client: Enables a window to "swallow" another window (e.g., terminal in browser).
+#dwm https://dwm.suckless.org/patches/swallow/dwm-swallow-20210320-0071bb3.diff
+
+# Zoom: Provides a zoom feature to focus on a specific window.
+#dwm https://dwm.suckless.org/patches/zoom/dwm-zoom-20210122-a3d1ef6.diff
+
+# Centered master: Adjusts the layout to center the master window.
+#dwm https://dwm.suckless.org/patches/centeredmaster/dwm-centeredmaster-20210725-b4c2f4e.diff
+
+# EWMH support: Adds support for EWMH, enhancing window manager compatibility.
+#dwm https://dwm.suckless.org/patches/ewmh/dwm-ewmh-20181129-0c3b93d.diff
+
+# Statusbar: Improves statusbar functionality and appearance.
+#dwm https://dwm.suckless.org/patches/status/dwm-status-20210801-18a9ec2.diff
+
+# Cfacts layout: Introduces a layout for specific tiling needs.
+#dwm https://dwm.suckless.org/patches/cfacts/dwm-cfacts-20210811-1c31c2a.diff
+
+# Monocle layout: Implements a monocle layout for focused workspaces.
+#dwm https://dwm.suckless.org/patches/monocle/dwm-monocle-20210212-bc93ef5.diff
+
+# Attach aside: Allows attaching windows to the side of the master window.
+#dwm https://dwm.suckless.org/patches/attachaside/dwm-attachaside-20200802-bbc82c4.diff
+
+# Tagging with keyboard: Enables keyboard-based tagging for quick workspace switching.
+#dwm https://dwm.suckless.org/patches/tagging/dwm-tagging-20200729-61bb8b2.diff
+
+# Serpent layout: Adds a serpentine layout for creative window management.
+#dwm https://dwm.suckless.org/patches/serpent/dwm-serpent-20200518-8d93ac5.diff
+
+# Title width: Adjusts the width of window titles in the status bar.
+#dwm https://dwm.suckless.org/patches/titlewidth/dwm-titlewidth-20210820-6e3dfed.diff
+
+# Window gap: Allows for customizable gaps between windows.
+#dwm https://dwm.suckless.org/patches/gaps/dwm-gaps-20210815-19fd3b1.diff
+
+# Two-column layout: Introduces a two-column layout for better window organization.
+#dwm https://dwm.suckless.org/patches/two-column/dwm-twocolumn-20210130-3b26df4.diff
+
+##################################################### DMENU PATCHES
+########### DMENU PATCHES
+
+# Grid layout: Displays the menu in a grid format for easier selection.
+#dmenu https://tools.suckless.org/dmenu/patches/grid/dmenu-grid-5.0.diff
+
+# Centered dmenu: Centers the dmenu on the screen for better visibility.
+#dmenu https://tools.suckless.org/dmenu/patches/centered/dmenu-centered-5.0.diff
+
+# Vertical list: Allows dmenu to display items in a vertical layout.
+#dmenu https://tools.suckless.org/dmenu/patches/vertical/dmenu-vertical-5.0.diff
+
+# Per-monitor status: Adapts dmenu behavior to multiple monitors.
+#dmenu https://tools.suckless.org/dmenu/patches/permonitor/dmenu-permonitor-5.0.diff
+
+# Dynamic menu: Creates dynamic dmenu entries based on current context.
+#dmenu https://tools.suckless.org/dmenu/patches/dynamic/dmenu-dynamic-5.0.diff
+
+# Mouse support: Adds mouse support for item selection in dmenu.
+#dmenu https://tools.suckless.org/dmenu/patches/mouse/dmenu-mouse-5.0.diff
+
+# ANSI color support: Enables ANSI color codes for enhanced menu appearance.
+#dmenu https://tools.suckless.org/dmenu/patches/ansi/dmenu-ansi-5.0.diff
+
+# Unicode support: Adds Unicode support for better character representation.
+#dmenu https://tools.suckless.org/dmenu/patches/unicode/dmenu-unicode-5.0.diff
+
+# Extended functionality: Enhances the core features of dmenu with additional options.
+#dmenu https://tools.suckless.org/dmenu/patches/extended/dmenu-extended-5.0.diff
+
+# Transparent background: Allows for transparent backgrounds in dmenu.
+#dmenu https://tools.suckless.org/dmenu/patches/transparent/dmenu-transparent-5.0.diff
+
+##################################################### ST PATCHES
+########### ST PATCHES
+
+# Scrollback support: Adds scrollback functionality to terminal output.
+#st https://st.suckless.org/patches/scrollback/st-scrollback-0.8.4.diff
+
+# Clipboard support: Integrates clipboard functionality for better text handling.
+#st https://st.suckless.org/patches/clipboard/st-clipboard-0.8.4.diff
+
+# Alpha support: Allows transparency in the terminal window.
+#st https://st.suckless.org/patches/alpha/st-alpha-0.8.4.diff
+
+# True color support: Enables true color support for enhanced terminal visuals.
+#st https://st.suckless.org/patches/tcolor/st-tcolor-0.8.4.diff
+
+# Unicode support: Improves Unicode handling for better character representation.
+#st https://st.suckless.org/patches/unicode/st-unicode-0.8.4.diff
+
+# URL support: Automatically detects and highlights URLs in the terminal.
+#st https://st.suckless.org/patches/url/st-url-0.8.4.diff
+
+# Bell support: Enables terminal bell notifications for alerts.
+#st https://st.suckless.org/patches/bell/st-bell-0.8.4.diff
+
+# Line drawing: Improves line drawing capabilities for better text rendering.
+#st https://st.suckless.org/patches/line/st-line-0.8.4.diff
+
+# Keyboard shortcuts: Adds customizable keyboard shortcuts for terminal operations.
+#st https://st.suckless.org/patches/keys/st-keys-0.8.4.diff
+
+# Custom fonts: Allows the use of custom fonts in the terminal.
+#st https://st.suckless.org/patches/fonts/st-fonts-0.8.4.diff
+
+# Mouse support: Adds mouse support for interactions within the terminal.
+#st https://st.suckless.org/patches/mouse/st-mouse-0.8.4.diff
+
+##################################################### SLSTATUS PATCHES
+########### SLSTATUS PATCHES
+
+# Add battery status: Displays battery information in the status bar.
+#slstatus https://github.com/realo/slstatus/pull/123.patch
+
+# Add volume status: Shows current audio volume level in the status bar.
+#slstatus https://github.com/realo/slstatus/pull/124.patch
+
+# Add network status: Displays network connectivity and IP address in the status bar.
+#slstatus https://github.com/realo/slstatus/pull/125.patch
+
+# Add CPU temperature: Shows CPU temperature readings in the status bar.
+#slstatus https://github.com/realo/slstatus/pull/126.patch
+
+# Add memory usage: Displays current memory usage statistics in the status bar.
+#slstatus https://github.com/realo/slstatus/pull/127.patch
+
+# Add disk usage: Shows disk usage statistics in the status bar.
+#slstatus https://github.com/realo/slstatus/pull/128.patch
+
+# Add uptime: Displays system uptime in the status bar.
+#slstatus https://github.com/realo/slstatus/pull/129.patch
+
+# Add weather: Provides current weather information in the status bar.
+#slstatus https://github.com/realo/slstatus/pull/130.patch
+
+# Add custom status: Allows for user-defined status scripts to be added.
+#slstatus https://github.com/realo/slstatus/pull/131.patch
+
+# Add custom script: Integrates additional scripts for extended functionality.
+#slstatus https://github.com/realo/slstatus/pull/132.patch
+
+##################################################### NNN PATCHES
+########### NNN PATCHES
+
+# File previews: Enables file previews directly in the terminal.
+#nnn https://github.com/jarun/nnn/releases/download/v4.0/nnn-4.0.tar.gz
+
+# Custom plugins: Supports various plugins to extend nnn's capabilities.
+#nnn https://github.com/jarun/nnn/blob/master/README.md#plugins
+
+# Fuzzy search: Implements fuzzy search functionality for quicker file access.
+#nnn https://github.com/jarun/nnn/commit/1b2d8ee5a3b10b1a9ec3c8a9caa857fc1d8a0a00.patch
+
+# Nnn-cp integration: Integrates with nnn-cp for advanced copy functionalities.
+#nnn https://github.com/jarun/nnn/pull/290.patch
+
+# Advanced file operations: Enhances file operations with additional features.
+#nnn https://github.com/jarun/nnn/pull/292.patch
+
+# Git integration: Provides Git integration for repository management.
+#nnn https://github.com/jarun/nnn/pull/270.patch
+
+# Bookmarking: Allows users to bookmark directories for quick access.
+#nnn https://github.com/jarun/nnn/pull/271.patch
+
+# Preview images: Supports image previews directly within nnn.
+#nnn https://github.com/jarun/nnn/pull/280.patch
+
+# Tabbed browsing: Enables tabbed browsing for multiple directory navigation.
+#nnn https://github.com/jarun/nnn/pull/260.patch
+
+# File browser: Enhances file browsing capabilities within nnn.
+#nnn https://github.com/jarun/nnn/pull/265.patch
+
+# Customizable interface: Allows users to customize the nnn interface extensively.
+#nnn https://github.com/jarun/nnn/pull/275.patch
