@@ -359,5 +359,8 @@ create_startup_script
 # Update .xinitrc
 update_xinitrc
 
+# Create session file for display manager
+create_session_file
+
 # End of script
 print_message $GREEN "All tasks completed."
