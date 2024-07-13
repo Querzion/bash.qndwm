@@ -4,3 +4,18 @@ feh
 scrot
 
 ######### 'Drivers'
+xorg
+xorg-xinit
+xorg-server
+xorg-xsetroot
+terminus-font
+base-devel
+libx11
+libxft
+imlib2
+libbsd
+libxcomposite
+libxext
+libxfixes
+libxinerama
+autoconf-archive
