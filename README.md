@@ -40,6 +40,8 @@ This is a lazy install script.
   - libxfixes
   - libxinerama
   - autoconf-archive
+  - slim-themes
+  - archlinux-themes-slim
 
 ### Info
 If there are more then one user on the computer and you want everyone to be able to use the same dwm change the install directory to (/usr/src)
