@@ -19,3 +19,6 @@ libxext
 libxfixes
 libxinerama
 autoconf-archive
+slim
+slim-themes
+archlinux-themes-slim
