@@ -56,6 +56,10 @@ LOCATION="$FOLDER/files"
 INSTALL_LOCATION="$HOME/.config/wm"
 BACKUP_DIR="$INSTALL_LOCATION/backups"
 
+# Config Files
+#XINITRC="$HOME/.xinitrc"
+#BASHRC="$HOME/.bashrc"
+
 ################################################################### FUNCTIONS
 ############ FUNCTIONS
 
