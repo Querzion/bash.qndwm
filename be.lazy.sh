@@ -286,4 +286,8 @@ done < "$APP_CONFIG_FILE"
 create_startup_script
 update_xinitrc
 
+# Create session file for display manager
+create_session_file
+
+
 print_message $GREEN "All tasks completed."
