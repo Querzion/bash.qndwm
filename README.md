@@ -2,15 +2,15 @@
 This is a lazy install script. 
 
 ## That installs (look at the list) in (~/.config/vm/$app).
-  - dwm ---------- (Suckless - Dynamic Window Manager)
-  - st ------------- (Suckless - Terminal)
-  - slstats --------- (Suckless - Status Bar)
-  - dmenu -------- (Suckless - Dynamic Menu)
-  - dwmblocks ---- (Dynamic Window Manager - Status Bar)
-  - nnn ---------- (Terminal File Manager)
-  - rofi --------- (Application Launcher)
-  - feh ---------- (Commandline Wallpaper Handler)
-  - scrot -------- (Commandline Screenshot Utility)
+  - (git) dwm ---------- (Suckless - Dynamic Window Manager)
+  - (git) st ------------- (Suckless - Terminal)
+  - (git) slstats --------- (Suckless - Status Bar)
+  - (git) dmenu -------- (Suckless - Dynamic Menu)
+  - (git) dwmblocks ---- (Dynamic Window Manager - Status Bar)
+  - (git) nnn ---------- (Terminal File Manager)
+  - (pacman) rofi --------- (Application Launcher)
+  - (pacman) feh ---------- (Commandline Wallpaper Handler)
+  - (pacman) scrot -------- (Commandline Screenshot Utility)
     
 ## Changes 
   - The .xinitrc file.
