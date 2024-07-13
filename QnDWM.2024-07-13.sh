@@ -280,6 +280,9 @@ create_session_file() {
 
 ################################################################### MAIN LOGIC
 
+# UPDATE SYSTEM (YOU NEVER KNOW)
+sudo pacman -Syyu -y
+
 # INSTALLS WHAT'S ADDED TO - packages.txt
 prerequisites
 
