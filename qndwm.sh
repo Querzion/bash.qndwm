@@ -63,7 +63,7 @@ BACKUP_DIR="$INSTALL_LOCATION/backups"
 ################################################################### FUNCTIONS
 ############ FUNCTIONS
 
-prerequisites() {
+install_Packages() {
     # Define the file location
     FILE_LOCATION="$LOCATION/packages.txt"
 
@@ -253,7 +253,7 @@ update_xinitrc() {
 ################################################################### MAIN LOGIC
 ############ MAIN LOGIC
 
-prerequisites
+install_Packages
 
 
 if [[ ! -f "$APP_CONFIG_FILE" ]]; then
