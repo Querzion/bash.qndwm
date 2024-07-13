@@ -2,12 +2,12 @@
 This is a lazy install script. 
 
 ## That installs (look at the list) in (~/.config/vm/$app).
-  - (git) dwm ---------- (Suckless - Dynamic Window Manager)
-  - (git) st ------------- (Suckless - Terminal)
+  - (git) dwm ------------- (Suckless - Dynamic Window Manager)
+  - (git) st -------------- (Suckless - Terminal)
   - (git) slstats --------- (Suckless - Status Bar)
-  - (git) dmenu -------- (Suckless - Dynamic Menu)
-  - (git) dwmblocks ---- (Dynamic Window Manager - Status Bar)
-  - (git) nnn ---------- (Terminal File Manager)
+  - (git) dmenu ----------- (Suckless - Dynamic Menu)
+  - (git) dwmblocks ------- (Dynamic Window Manager - Status Bar)
+  - (git) nnn ------------- (Terminal File Manager)
   - (pacman) rofi --------- (Application Launcher)
   - (pacman) feh ---------- (Commandline Wallpaper Handler)
   - (pacman) scrot -------- (Commandline Screenshot Utility)
