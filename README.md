@@ -1,4 +1,5 @@
-# bash.lazy-dwm
+# bash.qndwm Naaah! It's QnDWM. 
+"QnD Gamesquad" (Quest n Defend|Defeat) is the Discord I have.
 This is a lazy install script, that is intended to be post-installed on Arch, 
 after the alternatively use of the "archinstall" script. 
 
@@ -14,7 +15,7 @@ after the alternatively use of the "archinstall" script.
   - (pacman) scrot -------- (Commandline Screenshot Utility)
   - (pacman) slim --------- (Login Manager)
 
-A more detailed list is the actual (~/bash.lazy-dwm/files/packages.txt)
+A more detailed list is the actual (~/bash.qndwm/files/packages.txt)
     
 ## Changes 
   - The .xinitrc file.
@@ -64,7 +65,7 @@ A more detailed list is the actual (~/bash.lazy-dwm/files/packages.txt)
   - libxinerama
   - autoconf-archive
 
-A more detailed list is the actual (~/bash.lazy-dwm/files/packages.txt)
+A more detailed list is the actual (~/bash.qndwm/files/packages.txt)
 
 ### Info
 If there are more then one user on the computer and you want everyone to be able to use the same dwm change the install directory to (/usr/src)
@@ -72,21 +73,21 @@ If there are more then one user on the computer and you want everyone to be able
 # LazyDWM Installation Process
   - Clone the repository. . .
 ```bash
-git clone https://github.com/querzion/bash.lazy-dwm.git
+git clone https://github.com/querzion/bash.qndwm.git
 ```
   - Chmod the folder. Candy beats teeth otherwise.
 ```bash
-chmod +x -R ~/bash.lazy-dwm/*
+chmod +x -R ~/bash.qndwm/*
 ```
   - Start the script. . .
 OR? Actually, you should read the files, all of them. There's actually two install scripts. . .
   - VERSION ONE (Not Modified Patch Functionality)
 ```bash
-./bash.lazy-dwm/be.lazy.sh
+./bash.qndwm/qndwm.sh
 ```
   - VERSION TWO (Modified Patch Functionality)
 ```bash
-./bash.lazy-dwm/be.lazy.modified.sh
+./bash.qndwm/qndwm.modified.sh
 ```
 Everything should now be ready to be used. Reboot your computer or virtual machine. Which ever floats your boat.
 
