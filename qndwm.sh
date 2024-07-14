@@ -338,12 +338,16 @@ create_startup_script() {
     
     if [[ ! -f $STARTUP_SCRIPT ]]; then
         echo "#!/bin/bash" > $STARTUP_SCRIPT
+        echo "/usr/bin/pipewire &" >> $STARTUP_SCRIPT
+        echo "/usr/bin/pipewire-pulse &" >> $STARTUP_SCRIPT
+        echo "/usr/bin/pipewire-media-session &" >> $STARTUP_SCRIPT
         echo "exec dwm &" >> $STARTUP_SCRIPT
         echo "dmenu &" >> $STARTUP_SCRIPT
         echo "st &" >> $STARTUP_SCRIPT
         echo "slstatus &" >> $STARTUP_SCRIPT
         echo "dwmblocks &" >> $STARTUP_SCRIPT
         echo "nnn &" >> $STARTUP_SCRIPT
+        
         
         chmod +x $STARTUP_SCRIPT
         print_message $GREEN "Created startup script at $STARTUP_SCRIPT."
