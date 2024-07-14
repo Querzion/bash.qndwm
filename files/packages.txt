@@ -2,6 +2,12 @@
 #  https://github.com/arcolinux/arcolinux-nlogout/tree/main/etc/skel/.config/nlogout
 # nlogout (Logout Manager) https://github.com/DrunkenAlcoholic/nlogout.git
 
+###
+###  This list incorporates all pacman packages that is to be installed, add more if you want.
+###
+###  !!! Commenting will skipp the install.
+###
+
 
 ########## Applications
 rofi

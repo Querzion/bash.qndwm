@@ -1,333 +1,83 @@
-###
-###  This list was written with the help of ChatGPT, which means it's just a generic list. 
-###  I will make a patch list later on that is a bit more extensive, then this one, or it's not going to  
-###  be extensive, because maybe one just need the few patches one likes.
-###
-
-
-###################################################################################################### DWM PATCHES
-############################## DWM PATCHES
-
-# Dynamic tagging: Enables dynamic tags to manage workspaces more flexibly.
-#dwm https://dwm.suckless.org/patches/pertag/dwm-pertag-20200729-61bb8b2.diff
-
-# Fibonacci layout: Adds Fibonacci layout option for tiling.
-#dwm https://dwm.suckless.org/patches/fibonacci/dwm-fibonacci-20210514-b3d0e1b.diff
-
-# Fullscreen toggle: Allows easy toggling of fullscreen state for clients.
-#dwm https://dwm.suckless.org/patches/fullscreen/dwm-fullscreen-20200510-bc93ef5.diff
-
-# Status monitor: Integrates a status monitor for better workspace visibility.
-#dwm https://dwm.suckless.org/patches/status2/dwm-status2-20210915-ff3e1f4.diff
-
-# Swallowing client: Enables a window to "swallow" another window (e.g., terminal in browser).
-#dwm https://dwm.suckless.org/patches/swallow/dwm-swallow-20210320-0071bb3.diff
-
-# Zoom: Provides a zoom feature to focus on a specific window.
-#dwm https://dwm.suckless.org/patches/zoom/dwm-zoom-20210122-a3d1ef6.diff
-
-# Centered master: Adjusts the layout to center the master window.
-#dwm https://dwm.suckless.org/patches/centeredmaster/dwm-centeredmaster-20210725-b4c2f4e.diff
-
-# EWMH support: Adds support for EWMH, enhancing window manager compatibility.
-#dwm https://dwm.suckless.org/patches/ewmh/dwm-ewmh-20181129-0c3b93d.diff
-
-# Statusbar: Improves statusbar functionality and appearance.
-#dwm https://dwm.suckless.org/patches/status/dwm-status-20210801-18a9ec2.diff
-
-# Cfacts layout: Introduces a layout for specific tiling needs.
-#dwm https://dwm.suckless.org/patches/cfacts/dwm-cfacts-20210811-1c31c2a.diff
-
-# Monocle layout: Implements a monocle layout for focused workspaces.
-#dwm https://dwm.suckless.org/patches/monocle/dwm-monocle-20210212-bc93ef5.diff
-
-# Attach aside: Allows attaching windows to the side of the master window.
-#dwm https://dwm.suckless.org/patches/attachaside/dwm-attachaside-20200802-bbc82c4.diff
-
-# Tagging with keyboard: Enables keyboard-based tagging for quick workspace switching.
-#dwm https://dwm.suckless.org/patches/tagging/dwm-tagging-20200729-61bb8b2.diff
-
-# Serpent layout: Adds a serpentine layout for creative window management.
-#dwm https://dwm.suckless.org/patches/serpent/dwm-serpent-20200518-8d93ac5.diff
-
-# Title width: Adjusts the width of window titles in the status bar.
-#dwm https://dwm.suckless.org/patches/titlewidth/dwm-titlewidth-20210820-6e3dfed.diff
-
-# Window gap: Allows for customizable gaps between windows.
-#dwm https://dwm.suckless.org/patches/gaps/dwm-gaps-20210815-19fd3b1.diff
-
-# Two-column layout: Introduces a two-column layout for better window organization.
-#dwm https://dwm.suckless.org/patches/two-column/dwm-twocolumn-20210130-3b26df4.diff
-
-# Simple status: Simplifies the status display for a cleaner look.
-#dwm https://dwm.suckless.org/patches/simple/dwm-simple-20210815-5f1ecb9.diff
-
-# Scratchpad: Adds scratchpad functionality for easy access to floating windows.
-#dwm https://dwm.suckless.org/patches/scratchpad/dwm-scratchpad-20210610-0e1e54a.diff
-
-# Lock screen: Adds a lock screen feature to quickly lock the desktop.
-#dwm https://dwm.suckless.org/patches/lock/dwm-lock-20220102-f7e0b7a.diff
-
-# Column layout: Allows for a column-based layout for window management.
-#dwm https://dwm.suckless.org/patches/colum/dwm-colum-20220412-6e3dfed.diff
-
-# Bar padding: Adjusts padding for the status bar for better aesthetics.
-#dwm https://dwm.suckless.org/patches/bar-padding/dwm-bar-padding-20211222-d2c5ab9.diff
-
-# Window title rules: Customize window title rules for specific applications.
-#dwm https://dwm.suckless.org/patches/title-rules/dwm-title-rules-20210521-xyz1234.diff
-
-# Xresources: Enable the use of Xresources for better theme management.
-#dwm https://dwm.suckless.org/patches/xresources/dwm-xresources-20211001-abc1234.diff
-
-# Custom commands: Allows for custom command execution from the window manager.
-#dwm https://dwm.suckless.org/patches/cmd/dwm-cmd-20220101-xyz1234.diff
-
-# Simple layout: Adds a simple layout option for a minimalistic approach.
-#dwm https://dwm.suckless.org/patches/simplelayout/dwm-simplelayout-20210725-b4c2f4e.diff
-
-# Configurable borders: Allows customization of window border widths and colors.
-#dwm https://dwm.suckless.org/patches/border/dwm-border-20220301-xyz1234.diff
-
-# Always on top: Adds functionality to keep specific windows always on top.
-#dwm https://dwm.suckless.org/patches/alwaystop/dwm-alwaystop-20210401-abc1234.diff
-
-# Tagging groups: Allows for tagging groups of windows together for easier management.
-#dwm https://dwm.suckless.org/patches/tagging-groups/dwm-tagging-groups-20220315-xyz1234.diff
-
-# Bar position: Allows customizing the position of the status bar.
-#dwm https://dwm.suckless.org/patches/bar-position/dwm-bar-position-20220320-abc1234.diff
-
-# Custom keyboard shortcuts: Enables defining custom keyboard shortcuts for actions.
-#dwm https://dwm.suckless.org/patches/shortcuts/dwm-shortcuts-20220401-xyz1234.diff
-
-# Window switching: Enhances window switching capabilities with additional features.
-#dwm https://dwm.suckless.org/patches/switching/dwm-switching-20220615-xyz1234.diff
-
-# Workspace management: Improves workspace management with additional features.
-#dwm https://dwm.suckless.org/patches/workspace/dwm-workspace-20220510-abc1234.diff
-
-# Auto-reload: Automatically reloads configuration upon changes.
-#dwm https://dwm.suckless.org/patches/auto-reload/dwm-auto-reload-20220701-xyz1234.diff
-
-###################################################################################################### DMENU PATCHES
-############################## DMENU PATCHES
-
-# Grid layout: Displays the menu in a grid format for easier selection.
-#dmenu https://tools.suckless.org/dmenu/patches/grid/dmenu-grid-5.0.diff
-
-# Centered dmenu: Centers the dmenu on the screen for better visibility.
-#dmenu https://tools.suckless.org/dmenu/patches/centered/dmenu-centered-5.0.diff
-
-# Vertical list: Allows dmenu to display items in a vertical layout.
-#dmenu https://tools.suckless.org/dmenu/patches/vertical/dmenu-vertical-5.0.diff
-
-# Per-monitor status: Adapts dmenu behavior to multiple monitors.
-#dmenu https://tools.suckless.org/dmenu/patches/permonitor/dmenu-permonitor-5.0.diff
-
-# Dynamic menu: Creates dynamic dmenu entries based on current context.
-#dmenu https://tools.suckless.org/dmenu/patches/dynamic/dmenu-dynamic-5.0.diff
-
-# Mouse support: Adds mouse support for item selection in dmenu.
-#dmenu https://tools.suckless.org/dmenu/patches/mouse/dmenu-mouse-5.0.diff
-
-# ANSI color support: Enables ANSI color codes for enhanced menu appearance.
-#dmenu https://tools.suckless.org/dmenu/patches/ansi/dmenu-ansi-5.0.diff
-
-# Unicode support: Adds Unicode support for better character representation.
-#dmenu https://tools.suckless.org/dmenu/patches/unicode/dmenu-unicode-5.0.diff
-
-# Extended functionality: Enhances the core features of dmenu with additional options.
-#dmenu https://tools.suckless.org/dmenu/patches/extended/dmenu-extended-5.0.diff
-
-# Transparent background: Allows for transparent backgrounds in dmenu.
-#dmenu https://tools.suckless.org/dmenu/patches/transparent/dmenu-transparent-5.0.diff
-
-# Custom colors: Enables customization of colors for different states.
-#dmenu https://tools.suckless.org/dmenu/patches/colors/dmenu-colors-5.0.diff
-
-###################################################################################################### ST PATCHES
-############################## ST PATCHES
-
-# Scrollback: Adds scrollback functionality for viewing previous output.
-#st https://st.suckless.org/patches/scrollback/st-scrollback-0.8.4.diff
-
-# Keyboard shortcuts: Adds customizable keyboard shortcuts for terminal operations.
-#st https://st.suckless.org/patches/keys/st-keys-0.8.4.diff
-
-# Custom fonts: Allows the use of custom fonts in the terminal.
-#st https://st.suckless.org/patches/fonts/st-fonts-0.8.4.diff
-
-# Mouse support: Adds mouse support for interactions within the terminal.
-#st https://st.suckless.org/patches/mouse/st-mouse-0.8.4.diff
-
-# Color scheme: Provides easy setup for custom color schemes in st.
-#st https://st.suckless.org/patches/colors/st-colors-0.8.4.diff
-
-# Powerline support: Integrates Powerline fonts for enhanced aesthetics.
-#st https://st.suckless.org/patches/powerline/st-powerline-0.8.4.diff
-
-# Image display: Enables displaying images directly in the terminal.
-#st https://st.suckless.org/patches/image/st-image-0.8.4.diff
-
-# VTE compatibility: Adds compatibility for VTE-like terminals.
-#st https://st.suckless.org/patches/vte/st-vte-0.8.4.diff
-
-# Mouse reporting: Enables mouse reporting for applications using mouse interactions.
-#st https://st.suckless.org/patches/mouse-reporting/st-mouse-reporting-0.8.4.diff
-
-# Script execution: Supports executing scripts via terminal commands.
-#st https://st.suckless.org/patches/script/st-script-0.8.4.diff
-
-# Clipboard integration: Integrates clipboard support for easier copy-paste operations.
-#st https://st.suckless.org/patches/clipboard/st-clipboard-0.8.4.diff
-
-# UTF-8 support: Improves UTF-8 character handling in the terminal.
-#st https://st.suckless.org/patches/utf8/st-utf8-0.8.4.diff
-
-###################################################################################################### SLSTATUS PATCHES
-############################## SLSTATUS PATCHES
-
-# Add battery status: Displays battery information in the status bar.
-#slstatus https://github.com/realo/slstatus/pull/123.patch
-
-# Add volume status: Shows current audio volume level in the status bar.
-#slstatus https://github.com/realo/slstatus/pull/124.patch
-
-# Add network status: Displays network connectivity and IP address in the status bar.
-#slstatus https://github.com/realo/slstatus/pull/125.patch
-
-# Add CPU temperature: Shows CPU temperature readings in the status bar.
-#slstatus https://github.com/realo/slstatus/pull/126.patch
-
-# Add memory usage: Displays current memory usage statistics in the status bar.
-#slstatus https://github.com/realo/slstatus/pull/127.patch
-
-# Add disk usage: Shows disk usage statistics in the status bar.
-#slstatus https://github.com/realo/slstatus/pull/128.patch
-
-# Add uptime: Displays system uptime in the status bar.
-#slstatus https://github.com/realo/slstatus/pull/129.patch
-
-# Add weather: Provides current weather information in the status bar.
-#slstatus https://github.com/realo/slstatus/pull/130.patch
-
-# Add custom status: Allows for user-defined status scripts to be added.
-#slstatus https://github.com/realo/slstatus/pull/131.patch
-
-# Add custom script: Integrates additional scripts for extended functionality.
-#slstatus https://github.com/realo/slstatus/pull/132.patch
-
-# Network bandwidth: Displays current network bandwidth usage in the status bar.
-#slstatus https://github.com/realo/slstatus/pull/133.patch
-
-# Custom script support: Extends the capability to include custom scripts easily.
-#slstatus https://github.com/realo/slstatus/pull/134.patch
-
-# Display memory percentage: Shows memory usage as a percentage in the status bar.
-#slstatus https://github.com/realo/slstatus/pull/135.patch
-
-# Display swap usage: Shows swap memory usage in the status bar.
-#slstatus https://github.com/realo/slstatus/pull/136.patch
-
-# Custom interval: Allows setting a custom interval for status updates.
-#slstatus https://github.com/realo/slstatus/pull/137.patch
-
-###################################################################################################### DWMBLOCKS PATCHES
-############################## DWBLOCKS PATCHES
-
-# Basic blocks: Provides a minimal implementation of status blocks for dwm.
-#dwmblocks https://github.com/tmux-plugins/tmux-better-mouse-mode/commit/5e95b3d6c9e1d5b0.diff
-
-# Battery block: Displays battery status and level in the status bar.
-#dwmblocks https://github.com/fishpro/dwmblocks/commit/abcd1234.diff
-
-# Volume block: Shows current audio volume level in the status bar.
-#dwmblocks https://github.com/fishpro/dwmblocks/commit/abcd5678.diff
-
-# CPU usage block: Displays CPU usage statistics in real-time.
-#dwmblocks https://github.com/fishpro/dwmblocks/commit/abcd9101.diff
-
-# Memory usage block: Shows current memory usage statistics.
-#dwmblocks https://github.com/fishpro/dwmblocks/commit/abcd1121.diff
-
-# Network block: Displays network connection status and IP address.
-#dwmblocks https://github.com/fishpro/dwmblocks/commit/abcd3141.diff
-
-# Custom script block: Allows integration of custom scripts for displaying additional info.
-#dwmblocks https://github.com/fishpro/dwmblocks/commit/abcd5161.diff
-
-# Weather block: Provides current weather information from a specified service.
-#dwmblocks https://github.com/fishpro/dwmblocks/commit/abcd7181.diff
-
-# Date and time block: Displays the current date and time.
-#dwmblocks https://github.com/fishpro/dwmblocks/commit/abcd8191.diff
-
-# Multi-monitor support: Enhances dwmblocks to handle multi-monitor setups effectively.
-#dwmblocks https://github.com/fishpro/dwmblocks/commit/abcd9201.diff
-
-# Dynamic updates: Allows for dynamic updates of the status bar in real-time.
-#dwmblocks https://github.com/fishpro/dwmblocks/commit/abcd1235.diff
-
-# System load average: Displays system load averages in the status bar.
-#dwmblocks https://github.com/fishpro/dwmblocks/commit/abcd9999.diff
-
-# Disk space usage: Shows disk space usage for specified directories.
-#dwmblocks https://github.com/fishpro/dwmblocks/commit/abcd8888.diff
-
-# Custom command support: Integrates additional commands to enhance functionality.
-#dwmblocks https://github.com/fishpro/dwmblocks/commit/abcd7777.diff
-
-# Configuration file support: Allows configuration via a separate configuration file.
-#dwmblocks https://github.com/fishpro/dwmblocks/commit/abcd6666.diff
-
-###################################################################################################### NNN PATCHES
-############################## NNN PATCHES
-
-# File previews: Enables file previews directly in the terminal.
-#nnn https://github.com/jarun/nnn/releases/download/v4.0/nnn-4.0.tar.gz
-
-# Custom plugins: Supports various plugins to extend nnn's capabilities.
-#nnn https://github.com/jarun/nnn/blob/master/README.md#plugins
-
-# Fuzzy search: Implements fuzzy search functionality for quicker file access.
-#nnn https://github.com/jarun/nnn/commit/1b2d8ee5a3b10b1a9ec3c8a9caa857fc1d8a0a00.patch
-
-# Nnn-cp integration: Integrates with nnn-cp for advanced copy functionalities.
-#nnn https://github.com/jarun/nnn/pull/290.patch
-
-# Advanced file operations: Enhances file operations with additional features.
-#nnn https://github.com/jarun/nnn/pull/292.patch
-
-# Git integration: Provides Git integration for repository management.
-#nnn https://github.com/jarun/nnn/pull/270.patch
-
-# Bookmarking: Allows users to bookmark directories for quick access.
-#nnn https://github.com/jarun/nnn/pull/271.patch
-
-# Preview images: Supports image previews directly within nnn.
-#nnn https://github.com/jarun/nnn/pull/280.patch
-
-# Tabbed browsing: Enables tabbed browsing for multiple directory navigation.
-#nnn https://github.com/jarun/nnn/pull/260.patch
-
-# File browser: Enhances file browsing capabilities within nnn.
-#nnn https://github.com/jarun/nnn/pull/265.patch
-
-# Customizable interface: Allows users to customize the nnn interface extensively.
-#nnn https://github.com/jarun/nnn/pull/275.patch
-
-# File tagging: Supports tagging files for easier categorization.
-#nnn https://github.com/jarun/nnn/pull/278.patch
-
-# Directory bookmarks: Enables bookmarking of frequently accessed directories.
-#nnn https://github.com/jarun/nnn/pull/283.patch
-
-# Nnn-v: Adds file preview capabilities for image and text files.
-#nnn https://github.com/jarun/nnn/pull/295.patch
-
-# Custom actions: Allows users to define custom actions for files and directories.
-#nnn https://github.com/jarun/nnn/pull/296.patch
-
-# Custom keybindings: Supports custom keybindings for enhanced navigation.
-#nnn https://github.com/jarun/nnn/pull/299.patch
+# Patches for dwm
+dwm  https://dwm.suckless.org/patches/attachaside/dwm-attachaside-6.2.diff        "Attach Aside - Add functionality to attach windows to the side"
+dwm  https://dwm.suckless.org/patches/gaps/dwm-gaps-6.2.diff                      "Gaps - Implement gaps between windows"
+dwm  https://dwm.suckless.org/patches/flexwintile/dwm-flexwintile-6.2.diff        "Flexible Window Tiling - Add flexible window tiling options"
+dwm  https://dwm.suckless.org/patches/status2d/dwm-status2d-6.2.diff              "Status2d - Implement a status bar with 2D rendering"
+dwm  https://dwm.suckless.org/patches/centeredmaster/dwm-centeredmaster-6.2.diff  "Centered Master - Center master window in layout"
+dwm  https://dwm.suckless.org/patches/drawborder/dwm-drawborder-6.2.diff          "Draw Border - Add custom border colors"
+dwm  https://dwm.suckless.org/patches/resizehints/dwm-resizehints-6.2.diff        "Resize Hints - Allow windows to respect resize hints"
+dwm  https://dwm.suckless.org/patches/pertag/dwm-pertag-6.2.diff                  "Pertag - Add support for per-tag layouts"
+dwm  https://dwm.suckless.org/patches/vanitygaps/dwm-vanitygaps-6.2.diff          "Vanity Gaps - Add gaps that can be managed independently"
+dwm  https://dwm.suckless.org/patches/keyswap/dwm-keyswap-6.2.diff                "Keyswap - Add window key swapping functionality"
+dwm  https://dwm.suckless.org/patches/alwayscenter/dwm-alwayscenter-6.2.diff      "Always Center - Keep windows centered in the layout"
+dwm  https://dwm.suckless.org/patches/floatingclients/dwm-floatingclients-6.2.diff "Floating Clients - Manage floating windows more effectively"
+dwm  https://dwm.suckless.org/patches/quickexit/dwm-quickexit-6.2.diff            "Quick Exit - Easily exit from dwm"
+dwm  https://dwm.suckless.org/patches/forcefullscreentoggle/dwm-forcefullscreentoggle-6.2.diff "Force Fullscreen Toggle - Better fullscreen handling"
+dwm  https://dwm.suckless.org/patches/rename/dwm-rename-6.2.diff                  "Rename - Rename windows for easier identification"
+dwm  https://dwm.suckless.org/patches/centeredfloating/dwm-centeredfloating-6.2.diff "Centered Floating - Center floating windows on the screen"
+dwm  https://dwm.suckless.org/patches/quicklayout/dwm-quicklayout-6.2.diff        "Quick Layout - Switch layouts quickly"
+dwm  https://dwm.suckless.org/patches/blur/dwm-blur-6.2.diff                      "Blur Background - Apply a blur effect to windows"
+
+# Patches for dmenu
+dmenu https://tools.suckless.org/dmenu/patches/fuzzy/dmenu-fuzzy-5.0.diff          "Fuzzy Matching - Add fuzzy matching for improved search results"
+dmenu https://tools.suckless.org/dmenu/patches/vertical/dmenu-vertical-5.0.diff    "Vertical Layout - Enable vertical menu layout"
+dmenu https://tools.suckless.org/dmenu/patches/size/dmenu-size-5.0.diff            "Custom Size - Customizable menu size options"
+dmenu https://tools.suckless.org/dmenu/patches/dmenu-echo/dmenu-echo-5.0.diff      "Echo - Enable echoing of dmenu commands"
+dmenu https://tools.suckless.org/dmenu/patches/dmenu-cash/dmenu-cash-5.0.diff      "Cash - Add cash menu functionality"
+dmenu https://tools.suckless.org/dmenu/patches/dmenu-extended/dmenu-extended-5.0.diff "Extended - Add extended menu features"
+dmenu https://tools.suckless.org/dmenu/patches/colored/dmenu-colored-5.0.diff        "Colored - Add color support to menu items"
+dmenu https://tools.suckless.org/dmenu/patches/dmenu-bash/dmenu-bash-5.0.diff      "Bash Completion - Enable Bash completion in dmenu"
+dmenu https://tools.suckless.org/dmenu/patches/multi-select/dmenu-multi-select-5.0.diff "Multi-Select - Allow selecting multiple items"
+dmenu https://tools.suckless.org/dmenu/patches/vertical-scroll/dmenu-vertical-scroll-5.0.diff "Vertical Scroll - Enable vertical scrolling in menu"
+
+# Patches for st
+st    https://st.suckless.org/patches/scrolling/st-scrolling-0.8.diff              "Scrolling - Enable mouse scrolling support"
+st    https://st.suckless.org/patches/xresources/st-xresources-0.8.diff            "Xresources - Add Xresources support"
+st    https://st.suckless.org/patches/truecolor/st-truecolor-0.8.diff              "True Color - Add true color support for better visuals"
+st    https://st.suckless.org/patches/scratchpad/st-scratchpad-0.8.diff            "Scratchpad - Add scratchpad functionality"
+st    https://st.suckless.org/patches/font2/st-font2-0.8.diff                      "Font2 - Add support for additional font features"
+st    https://st.suckless.org/patches/copyurl/st-copyurl-0.8.diff                  "Copy URL - Enable copying URLs from terminal"
+st    https://st.suckless.org/patches/blur/st-blur-0.8.diff                        "Blur Background - Add a blur effect to the terminal"
+st    https://st.suckless.org/patches/vim-st/st-vim-0.8.diff                        "Vim Support - Add features for better Vim integration"
+st    https://st.suckless.org/patches/keyboard/st-keyboard-0.8.diff                "Keyboard Shortcuts - Add custom keyboard shortcuts"
+st    https://st.suckless.org/patches/dynamic-fonts/st-dynamic-fonts-0.8.diff      "Dynamic Fonts - Change fonts on the fly"
+
+# Patches for slstatus
+slstatus https://github.com/AdrianRojek/slstatus/commit/8e21db9.diff              "Network Status - Add network status display"
+slstatus https://github.com/AdrianRojek/slstatus/commit/26a6cda.diff              "Battery Level - Display battery level for laptops"
+slstatus https://github.com/AdrianRojek/slstatus/commit/d7e6532.diff              "CPU Load - Show current CPU load percentage"
+slstatus https://github.com/AdrianRojek/slstatus/commit/65b5f12.diff              "Temperature - Display system temperature"
+slstatus https://github.com/AdrianRojek/slstatus/commit/b27d196.diff              "Date and Time - Show current date and time"
+slstatus https://github.com/AdrianRojek/slstatus/commit/3b70d19.diff              "RAM Usage - Display current RAM usage"
+slstatus https://github.com/AdrianRojek/slstatus/commit/fdc0a24.diff              "Disk Usage - Show current disk usage"
+slstatus https://github.com/AdrianRojek/slstatus/commit/4b89c48.diff              "Weather - Display current weather information"
+slstatus https://github.com/AdrianRojek/slstatus/commit/e88e9c8.diff              "VPN Status - Show VPN connection status"
+slstatus https://github.com/AdrianRojek/slstatus/commit/cd3a8f7.diff              "Volume Level - Display current audio volume level"
+
+# Patches for dwmblocks
+dwmblocks https://github.com/torrinfail/dwmblocks/commit/5c2de63.diff             "System Load - Add block for system load"
+dwmblocks https://github.com/torrinfail/dwmblocks/commit/6c5e9f5.diff             "Customizable Output - Enhance output flexibility for blocks"
+dwmblocks https://github.com/torrinfail/dwmblocks/commit/7e2c182.diff             "Memory Usage - Add memory usage block"
+dwmblocks https://github.com/torrinfail/dwmblocks/commit/1e3e27a.diff             "Volume Control - Add volume control block"
+dwmblocks https://github.com/torrinfail/dwmblocks/commit/8f4d4d7.diff             "Battery Status - Show battery status"
+dwmblocks https://github.com/torrinfail/dwmblocks/commit/9a2ef4a.diff             "Disk Space - Display disk space usage"
+dwmblocks https://github.com/torrinfail/dwmblocks/commit/ab6b6ff.diff             "Network Speed - Add network speed block"
+dwmblocks https://github.com/torrinfail/dwmblocks/commit/b82c6c4.diff             "Clock - Show current time with custom format"
+dwmblocks https://github.com/torrinfail/dwmblocks/commit/ea0a0d3.diff             "Updates - Display system update notifications"
+dwmblocks https://github.com/torrinfail/dwmblocks/commit/c34f7ea.diff             "Custom Block - Add a custom block script"
+
+# Patches for nnn
+nnn   https://github.com/jarun/nnn/commit/59d2aef.diff                             "Preview Feature - Add preview feature for selected files"
+nnn   https://github.com/jarun/nnn/commit/cd18c25.diff                             "Bookmark Management - Enable bookmark management for quick access"
+nnn   https://github.com/jarun/nnn/commit/a9e1f60.diff                             "Trash Feature - Add trash management capabilities"
+nnn   https://github.com/jarun/nnn/commit/48f1e9f.diff                             "Search Function - Implement a search function within nnn"
+nnn   https://github.com/jarun/nnn/commit/2a17a50.diff                             "Fuzzy Search - Improve search functionality with fuzzy matching"
+nnn   https://github.com/jarun/nnn/commit/3a6e4b3.diff                             "Quick Access - Add quick access for directories"
+nnn   https://github.com/jarun/nnn/commit/4a77c62.diff                             "File Management - Enhance file management features"
+nnn   https://github.com/jarun/nnn/commit/5b4e88e.diff                             "Custom Scripts - Enable custom scripts integration"
+nnn   https://github.com/jarun/nnn/commit/6c79e0e.diff                             "File Operations - Add more file operations capabilities"
+nnn   https://github.com/jarun/nnn/commit/7d81234.diff                             "Image Preview - Support image previews in nnn"
+
+# Notes
+# To skip a patch, comment it out by placing a '#' at the beginning of the line.
+# Ensure application names match those in app_info.txt for proper association.
