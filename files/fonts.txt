@@ -1,0 +1,18 @@
+# How to add more fonts:
+# Add the font name followed by a space and then the download link.
+# Comment out lines with # to skip them.
+
+"Fira Code" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip"
+"Fira Mono" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraMono.zip"
+"Hack" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip"
+"DejaVu Sans Mono" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DejaVuSansMono.zip"
+"JetBrains Mono" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip"
+"Mononoki" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Mononoki.zip"
+"Ubuntu Mono" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/UbuntuMono.zip"
+"Source Code Pro" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/SourceCodePro.zip"
+"Roboto Mono" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/RobotoMono.zip"
+"Anonymous Pro" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/AnonymousPro.zip"
+"Menlo" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Menlo.zip"
+"Overpass" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Overpass.zip"
+"Terus" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Terus.zip"
+"Ubuntu" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Ubuntu.zip"
