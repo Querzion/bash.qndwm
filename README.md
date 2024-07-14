@@ -1,9 +1,9 @@
 # bash.qndwm Naaah! It's QnDWM. 
 "QnD Gamesquad" (Quest n Defend|Defeat) is the Discord I have.
-This is a lazy install script, that is intended to be post-installed on Arch, 
-after the alternatively use of the "archinstall" script. 
 
-There are two old versions of qndwm.sh the one without the *.old is the combined and up to date script.
+This is a lazy install script, that is intended to be post-installed on Arch, 
+after the alternatively use of the "archinstall" script. There are two old versions of qndwm.sh, 
+the one without the *.old is the combined and up to date script.
 
 ## That installs (look at the list) in (~/.config/vm/$app).
   - (git) dwm ------------- (Suckless - Dynamic Window Manager)
