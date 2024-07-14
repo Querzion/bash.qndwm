@@ -386,8 +386,10 @@ install_fonts() {
   read -p "${CYAN}Do you want to download all fonts? (y/n) ${NC}" download_all
   while IFS= read -r line; do
     [[ $line =~ ^#.*$ ]] && continue
-    name=$(echo $line | cut -d '"' -f2)
-    url=$(echo $line | cut -d '"' -f4)
+    #name=$(echo $line | cut -d '"' -f2)
+    #url=$(echo $line | cut -d '"' -f4)
+    name=$(echo $line | awk '{for(i=1;i<NF;i++) printf $i " "; print $NF}')
+    url=$(echo $line | awk '{print $NF}')
 
     if [[ $download_all =~ ^[yY]$ ]] || { read -p "${PURPLE}Install $name? (y/n) ${NC}" answer && [[ $answer =~ ^[yY]$ ]]; }; then
       echo -e "${GREEN}Installing $name...${NC}"
@@ -516,22 +518,31 @@ fix_bashrc() {
     echo -e "${GREEN} .bashrc file created successfully. ${NC}"
 }
 
+######################################################################################################### GRUB THEME INSTALL (NOT DONE - FIX THIS)
+################################ GRUB THEME INSTALL (NOT DONE - NO THEME IS BEING INSTALLED)
+
 theme_grub() {
     # Define GRUB configuration and theme paths
     GRUB_CONFIG="/etc/default/grub"
-    GRUB_THEME="/boot/grub/themes/arch/theme.txt"
-
+    GRUB_THEME_FOLDER="/boot/grub/themes/"
+    INSTALL_GRUB_THEME="$GRUB_THEME_FOLDER/$GRUB_THEME"
+    GRUB_THEME_TXT="$GRUB_THEME/theme.txt"
+    GRUB_THEME="arch"
+    
     # Backup existing GRUB config
     sudo cp $GRUB_CONFIG ${GRUB_CONFIG}.bak
     print_message $PURPLE "Backup of $GRUB_CONFIG created."
 
     # Update GRUB configuration for the theme
-    echo "GRUB_THEME=\"${GRUB_THEME}\"" | sudo tee -a $GRUB_CONFIG
+    echo "GRUB_THEME=\"${INSTALL_GRUB_THEME}\"" | sudo tee -a $GRUB_CONFIG
 
     # Update GRUB
     sudo grub-mkconfig -o /boot/grub/grub.cfg
     print_message $GREEN "GRUB configured and updated."
 }
+
+######################################################################################################### CREATE SESSION FILE
+################################ CREATE SESSION FILE
 
 create_session_file() {
     SESSION_FILE="/usr/share/xsessions/$SESSION_FILE_NAME"
@@ -552,7 +563,8 @@ create_session_file() {
     fi
 }
 
-################################################################### MAIN LOGIC
+######################################################################################################### MAIN LOGIC
+################################ MAIN LOGIC
 
 # UPDATE SYSTEM (YOU NEVER KNOW)
 sudo pacman -Syyu -y
