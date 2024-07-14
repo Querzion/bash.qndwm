@@ -32,6 +32,18 @@ BACKUP_DIR="$INSTALL_LOCATION/backups"
 
 ################################################################### FUNCTIONS
 
+# Function to print messages with color (assuming colors are globally defined)
+print_message() {
+    local color=$1
+    shift
+    echo -e "${color}$@${NO_COLOR}"
+}
+print_message() {
+    color=$1
+    message=$2
+    echo -e "${color}${message}${NC}"
+}
+
 prerequisites() {
     FILE_LOCATION="$LOCATION/packages.txt"
 
@@ -64,12 +76,6 @@ prerequisites() {
     done < "$FILE_LOCATION"
 
     echo -e "${GREEN}All packages processed.${NC}"
-}
-
-print_message() {
-    color=$1
-    message=$2
-    echo -e "${color}${message}${NC}"
 }
 
 backup_APP() {
@@ -179,6 +185,78 @@ patch_APP() {
     fi
 }
 
+
+
+install_and_patch_apps() {
+    # Check if the application configuration file exists
+    if [[ ! -f "$APP_CONFIG_FILE" ]]; then
+        print_message $RED "Error: Application configuration file $APP_CONFIG_FILE not found."
+        exit 1
+    fi
+
+    # Check if the patch configuration file exists
+    if [[ ! -f "$PATCH_CONFIG_FILE" ]]; then
+        print_message $RED "Error: Patch configuration file $PATCH_CONFIG_FILE not found."
+        exit 1
+    fi
+
+    # Prompt the user to decide whether to apply patches
+    read -p "Do you want to apply patches? (y/n): " apply_all_patches
+    if [[ "$apply_all_patches" =~ ^[yY]$ ]]; then
+        # Read the application configuration file line by line
+        while IFS= read -r line || [[ -n "$line" ]]; do
+            # Extract application name, description, and an additional field from each line
+            APP=$(echo $line | cut -d' ' -f1)
+            DESCRIPTION=$(echo $line | cut -d' ' -f2- | rev | cut -d' ' -f2- | rev)
+            FROM_HERE=$(echo $line | awk '{print $NF}')
+
+            # Install the application using the extracted information
+            install_APP "$APP" "$DESCRIPTION" "$FROM_HERE"
+
+            # Prompt the user to decide whether to install patches for this application
+            read -p "Do you want to install patches for $APP $DESCRIPTION? (y/n): " install_patches
+            if [[ "$install_patches" =~ ^[yY]$ ]]; then
+                # Ask if the user wants to apply all patches for the application
+                read -p "Do you want to apply all patches for $APP $DESCRIPTION? (y/n): " apply_all
+                if [[ "$apply_all" =~ ^[yY]$ ]]; then
+                    # Apply all patches for the application
+                    apply_patches "$APP" "$DESCRIPTION"
+                else
+                    # Read the patch configuration file line by line
+                    while IFS= read -r patch_line || [[ -n "$patch_line" ]]; do
+                        # Extract patch information from each line
+                        patch_app=$(echo $patch_line | cut -d' ' -f1)
+                        patch_url=$(echo $patch_line | awk '{print $2}')
+                        patch_description=$(echo $patch_line | cut -d' ' -f3-)
+
+                        # If the patch is for the current application, prompt to apply the patch
+                        if [[ "$patch_app" == "$APP" ]]; then
+                            read -p "Do you want to apply patch $patch_description? (y/n): " apply_patch
+                            if [[ "$apply_patch" =~ ^[yY]$ ]]; then
+                                # Download and apply the patch
+                                patch_file=$(basename "$patch_url")
+                                print_message $CYAN "Downloading patch from $patch_url"
+                                wget "$patch_url" -O "$patch_file"
+                                if patch -Np1 -i "$patch_file" -d "$INSTALL_LOCATION/$APP"; then
+                                    print_message $GREEN "Applied patch $patch_file successfully."
+                                else
+                                    print_message $RED "Failed to apply patch $patch_file."
+                                    exit 1
+                                fi
+                            fi
+                        fi
+                    done < "$PATCH_CONFIG_FILE"
+                fi
+            fi
+
+            # Configure the application after processing patches
+            configure_APP "$APP" "$DESCRIPTION"
+
+        done < "$APP_CONFIG_FILE"
+    fi
+}
+
+
 create_startup_script() {
     STARTUP_SCRIPT="$INSTALL_LOCATION/$QnDWM_FILE"
     
@@ -283,43 +361,11 @@ create_session_file() {
 # UPDATE SYSTEM (YOU NEVER KNOW)
 sudo pacman -Syyu -y
 
-# INSTALLS WHAT'S ADDED TO - packages.txt
+# INSTALLS WHAT'S ADDED TO - ../packages.txt
 prerequisites
 
-#    FILE EXISTENCE CHECK - ~/bash.qndwm/files/app_info.txt
-if [[ ! -f "$APP_CONFIG_FILE" ]]; then
-    print_message $RED "Error: Application configuration file $APP_CONFIG_FILE not found."
-    exit 1
-fi
-
-#    FILE EXISTENCE CHECK - ~/bash.qndwm/files/patches.txt
-if [[ ! -f "$PATCH_CONFIG_FILE" ]]; then
-    print_message $RED "Error: Patch configuration file $PATCH_CONFIG_FILE not found."
-    exit 1
-fi
-
-#    TOOL SCRIPT
-while IFS= read -r line || [[ -n "$line" ]]; do
-    APP=$(echo $line | cut -d' ' -f1)
-    DESCRIPTION=$(echo $line | cut -d' ' -f2- | rev | cut -d' ' -f2- | rev)
-    FROM_HERE=$(echo $line | awk '{print $NF}')
-    #     INSTALLS APPLICATION - ~/bash.qndwm/files/app_info.txt
-    install_APP "$APP" "$DESCRIPTION" "$FROM_HERE"
-
-    read -p "Do you want to configure $APP? (y/n): " CHOICE2
-    if [ "$CHOICE2" = "y" ] || [ "$CHOICE2" = "Y" ]; then
-        #    COPIES CONFIG FILES - ~/bash.qndwm/files/configurations
-        configure_APP "$APP" "$DESCRIPTION"
-    fi
-
-    read -p "Do you want to patch $APP? (y/n): " CHOICE3
-    if [ "$CHOICE3" = "y" ] || [ "$CHOICE3" = "Y" ]; then
-        #    APPLY PATCHES - ~/bash.qndwm/files/patches.txt
-        patch_APP "$APP" "$DESCRIPTION"
-    fi
-
-    print_message $GREEN "All tasks for $APP completed."
-done < "$APP_CONFIG_FILE"
+# INSTALLS PACKAGES FROM - ../app_info.txt & PATCHES THEM FROM - ../patches.txt
+install_and_patch_apps
 
 # Create startup script and update .xinitrc
 create_startup_script
@@ -331,7 +377,8 @@ configure_slim
 # Theme GRUB
 theme_grub
 
-# Create session file for display manager
+# Create session file for display manager 
+# (Even though SLiM does not use this, it's good to have if SDDM or some other login manager is present.)
 create_session_file
 
 print_message $GREEN "All tasks completed."
