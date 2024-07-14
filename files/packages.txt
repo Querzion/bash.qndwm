@@ -17,6 +17,7 @@ duf
 unzip
 variety
 arcolinux-tweak-tool-git
+gucharmap
 
 ######### System
 xorg
