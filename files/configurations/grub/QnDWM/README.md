@@ -1,4 +1,5 @@
 # Querzion GRUB theme
+This is not a fully tested theme just yet, and it's not done either. the pictures double up as wallpapers too. ;D 
 
 ## Installation:
 
