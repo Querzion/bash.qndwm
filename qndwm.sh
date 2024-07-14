@@ -43,19 +43,41 @@ PURPLE='\033[0;35m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+
 ############################### SETTINGS
+
+# User Name (Automagic Entry)
 USER="$(whoami)"
-APP_CONFIG_FILE="app_info.txt"
-PATCH_CONFIG_FILE="patches.txt"
+# Path to the app_info.txt file
+APP_CONFIG_FILE="$LOCATION/app_info.txt"
+# Path to the patches.txt file
+PATCH_CONFIG_FILE="$LOCATION/patches.txt"
+# Path to the fonts.txt file
+FONT_FILE="$LOCATION/fonts.txt"
+
+# Name of DWM Version
 SESSION_NAME="QnDWM"
+# Session File Name
 SESSION_FILE_NAME="qndwm.session"
+# Run Script
 QnDWM_FILE="run.qndwm.sh"
 
+
 ################################################################### FILE & FOLDER PATHS
+
+# Script Folder
 FOLDER="$HOME/bash.qndwm"
+# Script Folder Path
 LOCATION="$FOLDER/files"
+# Installation Path
 INSTALL_LOCATION="$HOME/.config/wm"
+# Directory to save backups 
 BACKUP_DIR="$INSTALL_LOCATION/backups"
+# Critical font
+CRITICAL_FONT_NAME="Nerd Fonts Symbols Only"
+CRITICAL_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/NerdFontsSymbolsOnly.zip"
+# Directory to install fonts
+FONT_DIR="$HOME/.local/share/fonts"
 
 ################################################################### FUNCTIONS
 
@@ -345,6 +367,153 @@ configure_slim() {
     # Enable SLiM to start at boot
     sudo systemctl enable slim
     print_message $GREEN "Enabled SLiM to start at boot."
+}
+
+
+
+# Function to handle all operations
+install_fonts() {
+  read -p "${CYAN}Do you want to download fonts? (y/n) ${NC}" download_fonts
+  if [[ $download_fonts =~ ^[nN]$ ]]; then
+    echo -e "${PURPLE}Installing critical font: $CRITICAL_FONT_NAME${NC}"
+    wget -q "$CRITICAL_FONT_URL" -O /tmp/font.zip
+    mkdir -p "$FONT_DIR"
+    unzip -qo /tmp/font.zip -d "$FONT_DIR"
+    fc-cache -f -v
+    exit 0
+  fi
+
+  read -p "${CYAN}Do you want to download all fonts? (y/n) ${NC}" download_all
+  while IFS= read -r line; do
+    [[ $line =~ ^#.*$ ]] && continue
+    name=$(echo $line | cut -d '"' -f2)
+    url=$(echo $line | cut -d '"' -f4)
+
+    if [[ $download_all =~ ^[yY]$ ]] || { read -p "${PURPLE}Install $name? (y/n) ${NC}" answer && [[ $answer =~ ^[yY]$ ]]; }; then
+      echo -e "${GREEN}Installing $name...${NC}"
+      wget -q "$url" -O /tmp/font.zip
+      mkdir -p "$FONT_DIR"
+      unzip -qo /tmp/font.zip -d "$FONT_DIR"
+      fc-cache -f -v
+      echo -e "${GREEN}$name installed.${NC}"
+    else
+      echo -e "${RED}Skipping $name.${NC}"
+    fi
+  done < "$FONT_FILE"
+
+  # Ensure the critical font is installed
+  echo -e "${PURPLE}Ensuring the critical font is installed: $CRITICAL_FONT_NAME${NC}"
+  wget -q "$CRITICAL_FONT_URL" -O /tmp/font.zip
+  unzip -qo /tmp/font.zip -d "$FONT_DIR"
+  fc-cache -f -v
+}
+
+fix_bashrc() {
+    # Define colors
+    PURPLE='\033[0;35m'
+    GREEN='\033[0;32m'
+    NC='\033[0m' # No Color
+
+    echo -e "${PURPLE} LETS BE FIXING THE BASH! ${NC}"
+    echo "First lets get the NerdFonts! All of them? ALL OF THEM!"
+
+    # Define the font directory
+    FONT_DIR="$HOME/.local/share/fonts/NerdFonts"
+
+    # Create the font directory if it doesn't exist
+    mkdir -p "$FONT_DIR"
+
+    # Define the Nerd Fonts download URL
+    BASE_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download"
+
+    # Array of all Nerd Fonts
+    FONTS=(
+        "3270.zip"
+        "Agave.zip"
+        "AnonymousPro.zip"
+        "Arimo.zip"
+        "AurulentSansMono.zip"
+        "BigBlueTerminal.zip"
+        "BitstreamVeraSansMono.zip"
+        "CascadiaCode.zip"
+        "CodeNewRoman.zip"
+        "Cousine.zip"
+        "DaddyTimeMono.zip"
+        "DejaVuSansMono.zip"
+        "DroidSansMono.zip"
+        "FantasqueSansMono.zip"
+        "FiraCode.zip"
+        "FiraMono.zip"
+        "Go-Mono.zip"
+        "Gohu.zip"
+        "Hack.zip"
+        "Hasklig.zip"
+        "HeavyData.zip"
+        "Hermit.zip"
+        "iA-Writer.zip"
+        "IBMPlexMono.zip"
+        "Inconsolata.zip"
+        "InconsolataGo.zip"
+        "InconsolataLGC.zip"
+        "Iosevka.zip"
+        "JetBrainsMono.zip"
+        "Lekton.zip"
+        "LiberationMono.zip"
+        "Meslo.zip"
+        "Monofur.zip"
+        "Monoid.zip"
+        "Mononoki.zip"
+        "MPlus.zip"
+        "Noto.zip"
+        "OpenDyslexic.zip"
+        "Overpass.zip"
+        "ProFont.zip"
+        "ProggyClean.zip"
+        "RobotoMono.zip"
+        "ShareTechMono.zip"
+        "SourceCodePro.zip"
+        "SpaceMono.zip"
+        "Terminus.zip"
+        "Tinos.zip"
+        "Ubuntu.zip"
+        "UbuntuMono.zip"
+        "VictorMono.zip"
+    )
+
+    # Download, unzip, and install each font
+    for FONT in "${FONTS[@]}"; do
+        echo "Downloading and installing $FONT..."
+        wget -q "$BASE_URL/$FONT" -O "/tmp/$FONT"
+        unzip -o "/tmp/$FONT" -d "$FONT_DIR"
+        rm "/tmp/$FONT"
+    done
+
+    # Download 0xProto fonts
+    echo "Downloading and installing 0xProto fonts..."
+    PROTO_URL="https://github.com/0xType/0xProto/archive/refs/heads/main.zip"
+    wget -q "$PROTO_URL" -O "/tmp/0xProto.zip"
+    unzip -o "/tmp/0xProto.zip" -d "/tmp"
+    mv "/tmp/0xProto-main/fonts/"* "$FONT_DIR"
+    rm -rf "/tmp/0xProto.zip" "/tmp/0xProto-main"
+
+    # Refresh the font cache
+    fc-cache -fv
+
+    echo -e "${GREEN} All Nerd Fonts installed successfully! ${NC}"
+
+    # Starship.rc changes the commandline look in Bash
+    echo -e "${PURPLE} NOW LETS SPRUCE THE BASH UP! STARSHIP! HERE I COME ${NC}"
+    curl -sS https://starship.rs/install.sh | sh
+
+    echo -e "${PURPLE} NOW ACTIVATE! . . . WELL! A REBOOT IS IN NEED HERE, LETS FIX THE REST FIRST! ${NC}"
+
+    # Create .bashrc file in the home directory with specific content
+    echo "Creating .bashrc file in the home directory..."
+
+    mv ~/.bashrc ~/.bashrc.bak
+    cp $BASHRC_FILE ~/
+
+    echo -e "${GREEN} .bashrc file created successfully. ${NC}"
 }
 
 theme_grub() {
