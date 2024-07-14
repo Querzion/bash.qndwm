@@ -1,8 +1,12 @@
-# How to add more fonts:
+### Font Locations; 
+# NerdFonts >> https://www.nerdfonts.com/font-downloads (This took some time to copy paste, since ChatGPT was unable to get the newest version (v3.2.1 2024-07-13/14))
+#
+# How to add more fonts: 
 # Add the font name followed by a space and then the download link.
 # Comment out lines with # to skip them.
 # Names and Links have to be inside quotes.
 
+########################################################################################################################### Nerd Fonts
 "0xProto"                     "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/0xProto.zip"
 "3270"                        "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/3270.zip"
 "Agave"                       "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Agave.zip"
@@ -47,15 +51,40 @@
 "Lilex"                       "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Lilex.zip"
 "Martian Mono"                "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/MartianMono.zip"
 "Meslo"                       "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip
+"Monaspace"                   "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Monaspace.zip"
+"Monofur"                     "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Monofur.zip"
+"Monoid"                      "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Monoid.zip"
+"Mononoki"                    "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Mononoki.zip"
+"M+"                          "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/MPlus.zip"
+"Noto"                        "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Noto.zip"
+"Open Dyslexic"               "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/OpenDyslexic.zip"
+"Overpass"                    "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Overpass.zip"
+"Pro Font"                    "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/ProFont.zip"
+"Proggy Clean"                "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/ProggyClean.zip"
+"Rec Mono"                    "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Recursive.zip"
+"Roboto Mono"                 "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/RobotoMono.zip"
+"Shure Tech Mono"             "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/ShareTechMono.zip"
+"Source Code Pro"             "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/SourceCodePro.zip"
+"Space Mono"                  "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/SpaceMono.zip"
+#"Symbols Only"                "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/NerdFontsSymbolsOnly.zip"
+"Terminess"                   "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Terminus.zip"
+"Tinos"                       "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Tinos.zip"
+"Ubuntu"                      "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Ubuntu.zip"
+"Ubuntu Mono"                 "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/UbuntuMono.zip"
+"Ubuntu Sans"                 "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/UbuntuSans.zip"
+"Victor Mono"                 "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/VictorMono.zip"
+"Zed Mono"                    "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/ZedMono.zip"
+########################################################################################################################### Microsoft Fonts
+########################################################################################################################### Google Fonts
+########################################################################################################################### Free Fonts
 
 
 
-"Mononoki" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Mononoki.zip"
-"Ubuntu Mono" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/UbuntuMono.zip"
-"Source Code Pro" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/SourceCodePro.zip"
-"Roboto Mono" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/RobotoMono.zip"
-"Anonymous Pro" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/AnonymousPro.zip"
-"Menlo" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Menlo.zip"
-"Overpass" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Overpass.zip"
-"Terus" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Terus.zip"
-"Ubuntu" "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Ubuntu.zip"
+
+
+
+
+
+
+
+
