@@ -3,8 +3,35 @@
 ###
 ###  This script downloads and installs multiple applications specified from a txt file (../files/app_info.txt),
 ###  applies patches that are added and uncommented in a txt file (../files/patches.txt), 
-###  creates a startup script that is placed in (~/.config/wm/$QnDWM_FILE), 
+###  creates a startup script that is placed in (~/.config/wm/start_apps.sh), 
 ###  and updates .xinitrc to include this startup script (~/.xinitrc).
+###
+###  MODIFIED| You do not have to comment or uncomment patches anymore, 
+###  since it will ask you if you want to install a patch. . . ON EVERY SINGLE PATCH added to patches.txt,
+###  but the formatting is different from patches.txt, so I will make a patches.modified.txt, I am however
+###  unsure to if the one that I already have created will even work, since chatgpt gave me 'fake' links. . . 
+###
+###  This is a visualisation of how the default Folder structure looks like:
+###  $HOME/
+###  └── .config/
+###      └── wm/
+###          ├── backups/           # Backup directory for previous installations
+###          ├── start_apps.sh      # Startup script for launching applications
+###          ├── dwm/                # Directory for dwm installation
+###          │   ├── patches/        # Directory for dwm patches
+###          │   └── (other files)
+###          ├── dmenu/              # Directory for dmenu installation
+###          │   ├── patches/        # Directory for dmenu patches
+###          │   └── (other files)
+###          ├── st/                 # Directory for st installation
+###          │   ├── patches/        # Directory for st patches
+###          │   └── (other files)
+###          ├── slstatus/           # Directory for slstatus installation
+###          │   ├── patches/        # Directory for slstatus patches
+###          │   └── (other files)
+###          └── dwmblocks/          # Directory for dwmblocks installation
+###              ├── patches/        # Directory for dwmblocks patches
+###              └── (other files)
 ###
 
 ############ COLOURED BASH TEXT
