@@ -79,7 +79,9 @@ CRITICAL_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.
 # Directory to install fonts
 FONT_DIR="$HOME/.local/share/fonts"
 
-################################################################### FUNCTIONS
+
+######################################################################################################### TERMINAL PROMT FUNCTION (COLOUR MESSAGES)
+################################ TERMINAL PROMT FUNCTION (FOR MORE COMPACT COLOUR CODE MESSAGES) (FIX THE DUPLICATE PROBLEM AND COMBINE THEM)
 
 # Function to print messages with color (assuming colors are globally defined)
 print_message() {
@@ -92,6 +94,10 @@ print_message() {
     message=$2
     echo -e "${color}${message}${NC}"
 }
+
+
+######################################################################################################### PACMAN INSTALLATION SCRIPT
+################################ PACMAN INSTALLATION SCRIPT (INSTALLS FROM PACKAGES.TXT)
 
 prerequisites() {
     FILE_LOCATION="$LOCATION/packages.txt"
@@ -127,6 +133,10 @@ prerequisites() {
     echo -e "${GREEN}All packages processed.${NC}"
 }
 
+
+######################################################################################################### QnDWM BACKUP FUNCTION
+################################ QnDWM BACKUP FUNCTION (IN CASE OF REINSTALLATIONS)
+
 backup_APP() {
     local APP=$1
     local DESCRIPTION=$2
@@ -149,6 +159,10 @@ backup_APP() {
         exit 1
     fi
 }
+
+
+######################################################################################################### QnD INSTALLATION FUNCTION
+################################ QnDWM INSTALLATION FUNCTION
 
 install_APP() {
     local APP=$1
@@ -173,6 +187,10 @@ install_APP() {
     print_message $GREEN "$APP installed successfully."
 }
 
+
+######################################################################################################### QnDWM CONFIGURATION FUNCTION
+################################ QnDWM CONFIGURATION FUNCTION
+
 configure_APP() {
     local APP=$1
     local DESCRIPTION=$2
@@ -195,6 +213,10 @@ configure_APP() {
         print_message $RED "No configuration file found for $APP. Skipping configuration."
     fi
 }
+
+
+######################################################################################################### QnDWM PATCH FUNCTION
+################################ QnDWM PATCH FUNCTION
 
 patch_APP() {
     local APP=$1
@@ -235,6 +257,8 @@ patch_APP() {
 }
 
 
+######################################################################################################### QnDWM MAIN FUNCTION
+################################ QnDWM MAIN FUNCTION
 
 install_and_patch_apps() {
     # Check if the application configuration file exists
@@ -306,6 +330,9 @@ install_and_patch_apps() {
 }
 
 
+######################################################################################################### QnDWM RUN SCRIPT CREATION
+################################ QnDWM RUN SCRIPT CREATION
+
 create_startup_script() {
     STARTUP_SCRIPT="$INSTALL_LOCATION/$QnDWM_FILE"
     
@@ -324,6 +351,10 @@ create_startup_script() {
         print_message $YELLOW "Startup script already exists at $STARTUP_SCRIPT."
     fi
 }
+
+
+######################################################################################################### XINITRC CONFIGURATION
+################################ XINITRC CONFIGURATION
 
 update_xinitrc() {
     XINITRC="$HOME/.xinitrc"
@@ -370,6 +401,8 @@ configure_slim() {
 }
 
 
+######################################################################################################### FONT INSTALLATION ('UN-DETAILED')
+################################ FONT INSTALLATION ('UN-DETAILED')
 
 # Function to handle all operations
 install_fonts() {
@@ -410,6 +443,57 @@ install_fonts() {
   fc-cache -f -v
 }
 
+
+######################################################################################################### FONT INSTALLATION (DETAILED)
+################################ FONT INSTALLATION (DETAILED)
+
+# Function to handle all operations
+install_fonts_detailed() {
+  read -p "${CYAN}Do you want to download fonts? (y/n) ${NC}" download_fonts
+  if [[ $download_fonts =~ ^[nN]$ ]]; then
+    echo -e "${PURPLE}Installing critical font: $CRITICAL_FONT_NAME${NC}"
+    wget -q "$CRITICAL_FONT_URL" -O /tmp/font.zip
+    mkdir -p "$FONT_DIR"
+    unzip -qo /tmp/font.zip -d "$FONT_DIR"
+    echo -e "Extracted files:"
+    unzip -l /tmp/font.zip | awk '{print $2}' | tail -n +4 | head -n -2
+    fc-cache -f -v
+    exit 0
+  fi
+
+  read -p "${CYAN}Do you want to download all fonts? (y/n) ${NC}" download_all
+  while IFS= read -r line; do
+    [[ $line =~ ^#.*$ ]] && continue
+    name=$(echo $line | awk '{for(i=1;i<NF;i++) printf $i " "; print $NF}')
+    url=$(echo $line | awk '{print $NF}')
+
+    if [[ $download_all =~ ^[yY]$ ]] || { read -p "${PURPLE}Install $name? (y/n) ${NC}" answer && [[ $answer =~ ^[yY]$ ]]; }; then
+      echo -e "${CYAN}Installing $name...${NC}"
+      wget -q "$url" -O /tmp/font.zip
+      mkdir -p "$FONT_DIR"
+      unzip -qo /tmp/font.zip -d "$FONT_DIR"
+      echo -e "Extracted files:"
+      unzip -l /tmp/font.zip | awk '{print $2}' | tail -n +4 | head -n -2
+      fc-cache -f -v
+      echo -e "${GREEN}$name installed.${NC}"
+    else
+      echo -e "${RED}Skipping $name.${NC}"
+    fi
+  done < "$FONT_FILE"
+
+  # Ensure the critical font is installed
+  echo -e "${PURPLE}Ensuring the critical font is installed: $CRITICAL_FONT_NAME${NC}"
+  wget -q "$CRITICAL_FONT_URL" -O /tmp/font.zip
+  unzip -qo /tmp/font.zip -d "$FONT_DIR"
+  echo -e "Extracted files:"
+  unzip -l /tmp/font.zip | awk '{print $2}' | tail -n +4 | head -n -2
+  fc-cache -f -v
+}
+
+
+######################################################################################################### BASHRC CONFIGURATIONS
+################################ BASHRC CONFIGURATIONS
+
 fix_bashrc() {
     # Define colors
     PURPLE='\033[0;35m'
@@ -419,87 +503,8 @@ fix_bashrc() {
     echo -e "${PURPLE} LETS BE FIXING THE BASH! ${NC}"
     echo "First lets get the NerdFonts! All of them? ALL OF THEM!"
 
-    # Define the font directory
-    FONT_DIR="$HOME/.local/share/fonts/NerdFonts"
-
-    # Create the font directory if it doesn't exist
-    mkdir -p "$FONT_DIR"
-
-    # Define the Nerd Fonts download URL
-    BASE_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download"
-
-    # Array of all Nerd Fonts
-    FONTS=(
-        "3270.zip"
-        "Agave.zip"
-        "AnonymousPro.zip"
-        "Arimo.zip"
-        "AurulentSansMono.zip"
-        "BigBlueTerminal.zip"
-        "BitstreamVeraSansMono.zip"
-        "CascadiaCode.zip"
-        "CodeNewRoman.zip"
-        "Cousine.zip"
-        "DaddyTimeMono.zip"
-        "DejaVuSansMono.zip"
-        "DroidSansMono.zip"
-        "FantasqueSansMono.zip"
-        "FiraCode.zip"
-        "FiraMono.zip"
-        "Go-Mono.zip"
-        "Gohu.zip"
-        "Hack.zip"
-        "Hasklig.zip"
-        "HeavyData.zip"
-        "Hermit.zip"
-        "iA-Writer.zip"
-        "IBMPlexMono.zip"
-        "Inconsolata.zip"
-        "InconsolataGo.zip"
-        "InconsolataLGC.zip"
-        "Iosevka.zip"
-        "JetBrainsMono.zip"
-        "Lekton.zip"
-        "LiberationMono.zip"
-        "Meslo.zip"
-        "Monofur.zip"
-        "Monoid.zip"
-        "Mononoki.zip"
-        "MPlus.zip"
-        "Noto.zip"
-        "OpenDyslexic.zip"
-        "Overpass.zip"
-        "ProFont.zip"
-        "ProggyClean.zip"
-        "RobotoMono.zip"
-        "ShareTechMono.zip"
-        "SourceCodePro.zip"
-        "SpaceMono.zip"
-        "Terminus.zip"
-        "Tinos.zip"
-        "Ubuntu.zip"
-        "UbuntuMono.zip"
-        "VictorMono.zip"
-    )
-
-    # Download, unzip, and install each font
-    for FONT in "${FONTS[@]}"; do
-        echo "Downloading and installing $FONT..."
-        wget -q "$BASE_URL/$FONT" -O "/tmp/$FONT"
-        unzip -o "/tmp/$FONT" -d "$FONT_DIR"
-        rm "/tmp/$FONT"
-    done
-
-    # Download 0xProto fonts
-    echo "Downloading and installing 0xProto fonts..."
-    PROTO_URL="https://github.com/0xType/0xProto/archive/refs/heads/main.zip"
-    wget -q "$PROTO_URL" -O "/tmp/0xProto.zip"
-    unzip -o "/tmp/0xProto.zip" -d "/tmp"
-    mv "/tmp/0xProto-main/fonts/"* "$FONT_DIR"
-    rm -rf "/tmp/0xProto.zip" "/tmp/0xProto-main"
-
-    # Refresh the font cache
-    fc-cache -fv
+    install_fonts
+    #install_fonts_detailed
 
     echo -e "${GREEN} All Nerd Fonts installed successfully! ${NC}"
 
@@ -517,6 +522,7 @@ fix_bashrc() {
 
     echo -e "${GREEN} .bashrc file created successfully. ${NC}"
 }
+
 
 ######################################################################################################### GRUB THEME INSTALL (NOT DONE - FIX THIS)
 ################################ GRUB THEME INSTALL (NOT DONE - NO THEME IS BEING INSTALLED)
@@ -541,6 +547,7 @@ theme_grub() {
     print_message $GREEN "GRUB configured and updated."
 }
 
+
 ######################################################################################################### CREATE SESSION FILE
 ################################ CREATE SESSION FILE
 
@@ -562,6 +569,7 @@ create_session_file() {
         print_message $YELLOW "Session file already exists at $SESSION_FILE."
     fi
 }
+
 
 ######################################################################################################### MAIN LOGIC
 ################################ MAIN LOGIC
