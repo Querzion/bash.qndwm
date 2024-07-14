@@ -419,8 +419,11 @@ install_fonts() {
   read -p "${CYAN}Do you want to download all fonts? (y/n) ${NC}" download_all
   while IFS= read -r line; do
     [[ $line =~ ^#.*$ ]] && continue
+    # This part handles the spaces between the name and the link. 
+    # This is restricted to only one space between name and link sections in the fonts.txt file.
     #name=$(echo $line | cut -d '"' -f2)
     #url=$(echo $line | cut -d '"' -f4)
+    # This is not restricted to how big the space is between the section name and link is in the fonts.txt.
     name=$(echo $line | awk '{for(i=1;i<NF;i++) printf $i " "; print $NF}')
     url=$(echo $line | awk '{print $NF}')
 
