@@ -18,6 +18,7 @@ unzip
 variety
 arcolinux-tweak-tool-git
 gucharmap
+firefox
 
 ######### System
 xorg
@@ -48,6 +49,7 @@ ttf-ms-win10-2
 fastfetch
 btop
 nim
+fzf
 
 ######### AUDIO
 pipewire
