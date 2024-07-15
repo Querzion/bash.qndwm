@@ -66,9 +66,9 @@ QnDWM_FILE="run.qndwm.sh"
 ################################################################### FILE & FOLDER PATHS
 
 # Script Folder
-FOLDER="$HOME/bash.qndwm"
+BASEDIR="$HOME/bash.qndwm"
 # Script Folder Path
-LOCATION="$FOLDER/files"
+LOCATION="$BASEDIR/files"
 # Installation Path
 INSTALL_LOCATION="$HOME/.config/wm"
 # Directory to save backups 
@@ -552,27 +552,79 @@ fix_bashrc() {
 }
 
 
-######################################################################################################### GRUB THEME INSTALL (NOT DONE - FIX THIS)
-################################ GRUB THEME INSTALL (NOT DONE - NO THEME IS BEING INSTALLED)
+######################################################################################################### GRUB THEME INSTALL
+################################ GRUB THEME INSTALL
 
-theme_grub() {
-    # Define GRUB configuration and theme paths
-    GRUB_CONFIG="/etc/default/grub"
-    GRUB_THEME_FOLDER="/boot/grub/themes/"
-    INSTALL_GRUB_THEME="$GRUB_THEME_FOLDER/$GRUB_THEME"
-    GRUB_THEME_TXT="$GRUB_THEME/theme.txt"
-    GRUB_THEME="arch"
-    
-    # Backup existing GRUB config
-    sudo cp $GRUB_CONFIG ${GRUB_CONFIG}.bak
-    print_message $PURPLE "Backup of $GRUB_CONFIG created."
+install_grub_theme() {
+    BASE_THEME_DIR="$BASEDIR/files/configurations/theming/grub/qndwm"
+    GRUB_THEME_DIR="/boot/grub/themes"
+    RESOLUTIONS=("1920x1080" "2560x1440" "3840x2160")
+    SELECTED_RESOLUTION=""
 
-    # Update GRUB configuration for the theme
-    echo "GRUB_THEME=\"${INSTALL_GRUB_THEME}\"" | sudo tee -a $GRUB_CONFIG
+    for res in "${RESOLUTIONS[@]}"; do
+        if xrandr | grep -q "$res"; then
+            SELECTED_RESOLUTION="$res"
+            break
+        fi
+    done
 
-    # Update GRUB
-    sudo grub-mkconfig -o /boot/grub/grub.cfg
-    print_message $GREEN "GRUB configured and updated."
+    if [[ -z "$SELECTED_RESOLUTION" ]]; then
+        echo "No supported resolution found. Exiting."
+        return 1
+    fi
+
+    THEME_SOURCE="$BASE_THEME_DIR/$SELECTED_RESOLUTION"
+
+    if [[ ! -d "$THEME_SOURCE" ]]; then
+        echo "Theme folder for resolution $SELECTED_RESOLUTION not found. Exiting."
+        return 1
+    fi
+
+    cp -r "$THEME_SOURCE" "$GRUB_THEME_DIR/"
+    echo "GRUB_THEME=\"${GRUB_THEME_DIR}/$SELECTED_RESOLUTION/theme.txt\"" >> /etc/default/grub
+    update-grub
+
+    echo "Theme for resolution $SELECTED_RESOLUTION installed successfully."
+}
+
+
+######################################################################################################### FIREFOX THEMING
+################################ FIREFOX THEMING
+
+install_firefox_theme() {
+    FIREFOX_PROFILE_DIR="$HOME/.mozilla/firefox/*.default-release"
+
+    git clone https://github.com/Naezr/ShyFox.git /tmp/ShyFox
+
+    if [[ ! -d $FIREFOX_PROFILE_DIR ]]; then
+        echo "Firefox profile directory not found. Exiting."
+        return 1
+    fi
+
+    cp -r /tmp/ShyFox/* $FIREFOX_PROFILE_DIR/
+    cp "$BASEDIR/files/configurations/theming/firefox/qndwm.zip" $FIREFOX_PROFILE_DIR/
+
+    echo "Firefox theming installed successfully."
+}
+
+
+######################################################################################################### CHANGE FASTFETCH OUTPUT
+################################ CHANGE FASTFETCH OUTPUT
+
+update_fastfetch() {
+    FASTFETCH_CONFIG_DIR="$HOME/.config/fastfetch"
+    FFCONFIG_FILES="$BASEDIR/files/configurations/theming/fastfetch/*"
+
+    # Generate a new Fastfetch config
+    fastfetch --gen-config-force
+
+    # Backup existing config
+    mv "$FASTFETCH_CONFIG_DIR/config.jsonc" "$FASTFETCH_CONFIG_DIR/config.jsonc.bak"
+
+    # Copy the new Fastfetch configurations
+    cp -R $FFCONFIG_FILES "$FASTFETCH_CONFIG_DIR/"
+
+    echo "Fastfetch configuration updated successfully."
 }
 
 
@@ -619,7 +671,11 @@ update_xinitrc
 configure_slim
 
 # Theme GRUB
-theme_grub
+install_grub_theme
+# Theme FIREFOX
+install_firefox_theme
+# Change FASTFETCH Output
+update_fastfetch
 
 # Create session file for display manager 
 # (Even though SLiM does not use this, it's good to have if SDDM or some other login manager is present.)
