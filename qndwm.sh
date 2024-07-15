@@ -80,19 +80,26 @@ CRITICAL_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.
 FONT_DIR="$HOME/.local/share/fonts"
 
 
-######################################################################################################### TERMINAL PROMT FUNCTION (COLOUR MESSAGES)
-################################ TERMINAL PROMT FUNCTION (FOR MORE COMPACT COLOUR CODE MESSAGES) (FIX THE DUPLICATE PROBLEM AND COMBINE THEM)
+######################################################################################################### TERMINAL PROMT FUNCTION
+################################ TERMINAL PROMT FUNCTION
 
 # Function to print messages with color (assuming colors are globally defined)
+#print_message() {
+#    local color=$1
+#    shift
+#    echo -e "${color}$@${NO_COLOR}"
+#}
+#print_message() {
+#    color=$1
+#    message=$2
+#    echo -e "${color}${message}${NC}"
+#}
+
 print_message() {
     local color=$1
     shift
-    echo -e "${color}$@${NO_COLOR}"
-}
-print_message() {
-    color=$1
-    message=$2
-    echo -e "${color}${message}${NC}"
+    local message="$@"
+    echo -e "${color}${message}${NO_COLOR}"
 }
 
 
