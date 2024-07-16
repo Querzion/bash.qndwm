@@ -609,7 +609,7 @@ install_firefox_theme() {
     fi
 
     cp -r /tmp/ShyFox/* $FIREFOX_PROFILE_DIR/
-    cp "$BASEDIR/files/configurations/theming/firefox/qndwm.zip" $FIREFOX_PROFILE_DIR/
+    cp "$BASEDIR/files/configurations/theming/firefox/qndwm-ff.red-less.zip" $FIREFOX_PROFILE_DIR/
 
     echo "Firefox theming installed successfully."
 }
