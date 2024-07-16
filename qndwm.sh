@@ -709,5 +709,4 @@ create_session_file
 install_nlogout
 
 print_message $GREEN "All tasks completed."
-
 print_message $PURPLE "Reboot when ready."
