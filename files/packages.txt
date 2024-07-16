@@ -26,6 +26,7 @@ xorg-xinit
 xorg-server
 xorg-xsetroot
 terminus-font
+base 
 base-devel
 libx11
 libxft
@@ -48,7 +49,7 @@ ttf-ms-win10-1
 ttf-ms-win10-2
 fastfetch
 btop
-nim
+#nim
 fzf
 
 ######### AUDIO

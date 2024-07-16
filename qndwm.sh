@@ -658,6 +658,24 @@ create_session_file() {
 }
 
 
+######################################################################################################### INSTALL NLOGOUT
+################################ INSTALL NLOGOUT (NIM IS NEEDED FOR THIS TO WORK!)
+
+install_nlogout() {
+    
+    
+    git clone https://github.com/DrunkenAlcoholic/nlogout.git
+    cd nlogout
+
+    ./rebuild.sh
+
+    # QnDWM nLogout Theme configuration will go here:
+    # But I have not yet come to create a theme for it. 
+    # I just want to test so that it works first. 
+
+}
+
+
 ######################################################################################################### MAIN LOGIC
 ################################ MAIN LOGIC
 
@@ -688,4 +706,8 @@ update_fastfetch
 # (Even though SLiM does not use this, it's good to have if SDDM or some other login manager is present.)
 create_session_file
 
+install_nlogout
+
 print_message $GREEN "All tasks completed."
+
+print_message $PURPLE "Reboot when ready."
