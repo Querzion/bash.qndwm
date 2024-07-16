@@ -19,6 +19,7 @@ variety
 arcolinux-tweak-tool-git
 gucharmap
 firefox
+zed
 
 ######### System
 xorg
