@@ -10,11 +10,8 @@
 "pacman" "base" # Base system
 "pacman" "base-devel" # Base development tools
 "pacman" "xorg" # Xorg server
-"pacman" "xorg-utils" # Xorg utilities
 "pacman" "xorg-server" # Xorg server package
 "pacman" "xorg-xinit" # Xinit for starting X sessions
-"pacman" "xorg-xkb-layouts" # XKB layouts for Xorg
-"pacman" "xev" # X event tester
 "pacman" "timeshift" # System backup tool
 
 ##### Text Editors
@@ -46,12 +43,9 @@
 ##### Video Codecs
 "pacman" "ffmpeg" # FFmpeg multimedia framework
 "pacman" "libx264" # H.264 codec
-"pacman" "libx265" # H.265 codec
+"pacman" "ffhevc" # H.265 codec
 "pacman" "libvpx" # VP8/VP9 codec
 "pacman" "gstreamer" # GStreamer multimedia framework
-"pacman" "gstreamer-plugins-good" # Good set of GStreamer plugins
-"pacman" "gstreamer-plugins-bad" # Bad set of GStreamer plugins
-"pacman" "gstreamer-plugins-ugly" # Ugly set of GStreamer plugins
 
 ##### Terminal Emulators
 "pacman" "kitty" # Kitty terminal emulator
@@ -69,15 +63,15 @@
 "pacman" "bluez-utils" # Bluetooth utilities
 "pacman" "blueman" # Bluetooth manager
 "pacman" "blueberry" # Bluetooth manager for XFCE
-"pacman" "blueberry-systray" # Blueberry systray applet
+#"pacman" "blueberry-systray" # Blueberry systray applet
 
 ##### Network Management
-"pacman" "network-manager" # Network Manager
-"pacman" "nm-applet" # Network Manager applet
+#"pacman" "network-manager" # Network Manager
+#"pacman" "nm-applet" # Network Manager applet
 "pacman" "dhcpcd" # DHCP client daemon
 "pacman" "openvpn" # OpenVPN client
 "pacman" "nss-mdns" # Multicast DNS resolver
-"pacman" "wpasupplicant" # WPA supplicant
+#"pacman" "wpasupplicant" # WPA supplicant
 "pacman" "samba" # Samba for file sharing
 "pacman" "smbclient" # Samba client utilities
 "pacman" "nfs-utils" # NFS utilities
@@ -132,18 +126,18 @@
 "flatpak" "flathub/org.keepassxc.KeePassXC" # KeePassXC password manager
 
 ##### Gaming Applications
-"pacman" "steam" # Game platform
+"flatpak" "flathub/com.valvesoftware.Steam" # Game platform
 "pacman" "lutris" # Game manager
-"pacman" "wine" # Windows compatibility layer
-"pacman" "heroic" # Epic Games launcher
-"pacman" "proton-ge" # Proton for gaming
-"pacman" "emudeck" # EmuDeck for emulation
+#"pacman" "wine" # Windows compatibility layer
+#"pacman" "heroic" # Epic Games launcher
+#"pacman" "proton-ge" # Proton for gaming
+#"pacman" "emudeck" # EmuDeck for emulation
 "pacman" "gamescope" # Game session manager
 "pacman" "gamemode" # Gaming performance manager
 "pacman" "mangohud" # Performance overlay
 
 ##### Streaming Applications
-"flatpak" "flathub/com.obsproject OBS" # OBS Studio for streaming
+"flatpak" "flathub/com.obsproject.OBS" # OBS Studio for streaming
 "pacman" "discord" # Discord communication app
 "flatpak" "flathub/com.discordapp.Discord" # Discord (Flatpak)
 "pacman" "vlc" # VLC media player

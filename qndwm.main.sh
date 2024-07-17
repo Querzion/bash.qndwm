@@ -155,24 +155,24 @@ install_package() {
     case "$manager" in
         pacman)
             if pacman -Q "$package" &>/dev/null; then
-                echo "Package $package is already installed. Skipping."
+                echo -e "${YELLOW} Package $package is already installed. Skipping.${NC}"
                 return
             fi
             ;;
         yay|paru)
             if pacman -Q "$package" &>/dev/null; then
-                echo "Package $package is already installed. Skipping."
+                echo -e "${YELLOW} Package $package is already installed. Skipping.${NC}"
                 return
             fi
             ;;
         flatpak)
             if flatpak list --app | grep -q "$package"; then
-                echo "Package $package is already installed. Skipping."
+                echo -e "${YELLOW} Package $package is already installed. Skipping.${NC}"
                 return
             fi
             ;;
         *)
-            echo "Unknown package manager: $manager"
+            echo -e "${BLUE} Unknown package manager: $manager${NC}"
             return
             ;;
     esac
@@ -180,15 +180,19 @@ install_package() {
     # Attempt to install the package
     case "$manager" in
         pacman)
+            echo -e "${PURPLE} Installing $package with $manager...${NC}"
             sudo pacman -S --noconfirm "$package" || echo "$manager $package" >> "$ERROR_LOG"
             ;;
         yay)
+            echo -e "${PURPLE} Installing $package with $manager...${NC}"
             yay -S --noconfirm "$package" || echo "$manager $package" >> "$ERROR_LOG"
             ;;
         paru)
+            echo -e "${PURPLE} Installing $package with $manager...${NC}"
             paru -S --noconfirm "$package" || echo "$manager $package" >> "$ERROR_LOG"
             ;;
         flatpak)
+            echo -e "${PURPLE} Installing $package with $manager...${NC}"
             remote=$(echo "$package" | cut -d'/' -f1)
             app_id=$(echo "$package" | cut -d'/' -f2-)
             flatpak install -y "$remote" "$app_id" || echo "$manager $package" >> "$ERROR_LOG"
@@ -202,8 +206,8 @@ read_package_list() {
 
     # Read the package list file line by line
     while IFS= read -r line; do
-        # Skip empty lines and lines starting with ###
-        [[ -z "$line" || "$line" =~ ^### ]] && continue
+        # Skip empty lines and lines starting with #
+        [[ -z "$line" || "$line" =~ ^# ]] && continue
 
         # Parse the line to get the package manager and package name
         if [[ "$line" =~ ^\"(.+)\"\ \"(.+)\" ]]; then
@@ -276,7 +280,26 @@ read
 > "$ERROR_LOG"
 
 # Call the function to read the package list and install packages
+echo -e "${CYAN} Starting package installation...${NC}"
 read_package_list "$FROM_PACKAGES_LIST"
+echo -e "${CYAN} Package installation complete.${NC}"
+
+# Check if there were any errors
+if [[ -s "$ERROR_LOG" ]]; then
+    echo -e "${RED} Some packages failed to install. See $ERROR_LOG for details.${NC}"
+else
+    echo -e "${GREEN} All packages installed successfully.${NC}"
+fi
+
+
+
+
+
+
+
+
+
+
 
 echo -e "${CYAN} Installation complete!${NC}"
 
