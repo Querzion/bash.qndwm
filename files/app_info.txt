@@ -5,6 +5,8 @@
 ###  !!! Commenting will skipp the install.
 ###
 
+# Name - Description - Link
+
 dwm (Dynamic Window Manager) https://git.suckless.org/dwm
 dmenu (Dynamic Menu) https://git.suckless.org/dmenu
 st (Suckless Terminal) https://git.suckless.org/st
