@@ -82,8 +82,46 @@ INSTALL_QnDWM_FILE_DIR="$INSTALL_WM_DIR"
 ############################################################################################################################### FUNCTION
 ################### PREREQUSITES FROM PACKAGES.TXT (YAY/PARU, FLATPAK & PACMAN)
 
-# Install package managers
-sudo pacman -S --noconfirm yay paru flatpak
+install_aur_helper() {
+    local helper=$1
+
+    if [[ -z "$helper" ]]; then
+        echo "Usage: install_aur_helper <helper_name>"
+        return 1
+    fi
+
+    echo "Installing $helper..."
+    
+    sudo pacman -S --needed base-devel git
+    
+    git clone https://aur.archlinux.org/${helper}.git
+    cd $helper || { echo "Failed to enter directory"; return 1; }
+    
+    makepkg -si
+    
+    cd ..
+    rm -rf $helper
+
+    echo "$helper installed successfully."
+}
+
+install_flatpak() {
+    echo "Installing flatpak..."
+    
+    sudo pacman -S flatpak
+    
+    sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    
+    flatpak update
+
+    echo "flatpak installed successfully."
+}
+
+install_all() {
+    install_aur_helper paru
+    install_aur_helper yay
+    install_flatpak
+}
 
 
 # New install script.
@@ -187,6 +225,8 @@ install_packages() {
 ############################################################################################################################### MAIN FUNCTION
 ################### MAIN LOGIC
 
+#Install package managers paru, yay, flatpak.
+install_all
 
 echo -e "${GREEN}Installing packages from $FROM_PACKAGES...${NC}"
 #install_packages
