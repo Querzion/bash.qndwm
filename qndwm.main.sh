@@ -82,7 +82,36 @@ INSTALL_QnDWM_FILE_DIR="$INSTALL_WM_DIR"
 ############################################################################################################################### FUNCTION
 ################### PREREQUSITES FROM PACKAGES.TXT (YAY/PARU, FLATPAK & PACMAN)
 
+# Function to install package managers if not installed
+install_package_managers() {
+    for manager in flatpak yay paru; do
+        if ! command -v "$manager" &>/dev/null; then
+            echo -e "${YELLOW}Installing $manager...${NC}"
+            sudo pacman -S --noconfirm "$manager"
+        fi
+    done
+}
+
+
+# New install script.
 install_packages() {
+    while IFS= read -r line; do
+        [[ -z "$line" || "$line" =~ ^# ]] && continue
+        manager=$(echo "$line" | awk '{print $1}' | tr -d '"')
+        package=$(echo "$line" | awk '{print $2}' | tr -d '"')
+
+        echo -e "${BLUE}Installing $package using $manager...${NC}"
+        case $manager in
+            yay|paru) sudo "$manager" -S --noconfirm "$package" ;;
+            flatpak) flatpak install -y "$package" ;;
+            pacman) sudo pacman -S --noconfirm "$package" ;;
+            *) echo -e "${RED}Unknown package manager: $manager${NC}" ;;
+        esac
+    done < "$FROM_PACKAGES"
+}
+
+# Old install script.
+#install_packages() {
     while IFS= read -r line; do
         # Skip comments and empty lines
         [[ "$line" =~ ^# || -z "$line" ]] && continue
@@ -165,7 +194,10 @@ install_packages() {
 ############################################################################################################################### MAIN FUNCTION
 ################### MAIN LOGIC
 
-echo -e "${GREEN}Starting package installation...${NC}"
+echo -e "${GREEN}Installing package managers...${NC}"
+install_package_managers
+
+echo -e "${GREEN}Installing packages from $FROM_PACKAGES...${NC}"
 install_packages
-echo -e "${CYAN}Package installation complete!${NC}"
+echo -e "${CYAN}Installation complete!${NC}"
 
