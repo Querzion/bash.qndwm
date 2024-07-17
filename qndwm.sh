@@ -386,7 +386,7 @@ update_xinitrc() {
         echo "    exec startanotherdesktop" >> "$XINITRC"
         echo "    ;;" >> "$XINITRC"
         echo "  *)" >> "$XINITRC"
-        echo "    exec \$DEFAULT_SESSION" >> "$XINITRC"
+        echo "    exec $DEFAULT_SESSION" >> "$XINITRC"
         echo "    ;;" >> "$XINITRC"
         echo "esac" >> "$XINITRC"
     fi
