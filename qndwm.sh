@@ -664,8 +664,8 @@ create_session_file() {
 
 install_nlogout() {
     
-    
-    git clone https://github.com/DrunkenAlcoholic/nlogout.git ~/
+    cd ~/
+    git clone https://github.com/DrunkenAlcoholic/nlogout.git 
     cd ~/nlogout
 
     ./rebuild.sh
