@@ -74,8 +74,8 @@ INSTALL_LOCATION="$HOME/.config/wm"
 # Directory to save backups 
 BACKUP_DIR="$INSTALL_LOCATION/backups"
 # Critical font
-CRITICAL_FONT_NAME="Nerd Fonts Symbols Only"
-CRITICAL_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/NerdFontsSymbolsOnly.zip"
+CRITICAL_FONT_NAME="JetBrains Mono"
+CRITICAL_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip"
 # Directory to install fonts
 FONT_DIR="$HOME/.local/share/fonts"
 
