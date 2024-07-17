@@ -66,7 +66,7 @@
 "Shure Tech Mono"             "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/ShareTechMono.zip"
 "Source Code Pro"             "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/SourceCodePro.zip"
 "Space Mono"                  "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/SpaceMono.zip"
-#"Symbols Only"                "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/NerdFontsSymbolsOnly.zip"
+"Symbols Only"                "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/NerdFontsSymbolsOnly.zip"
 "Terminess"                   "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Terminus.zip"
 "Tinos"                       "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Tinos.zip"
 "Ubuntu"                      "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Ubuntu.zip"

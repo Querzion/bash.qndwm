@@ -82,63 +82,37 @@ INSTALL_QnDWM_FILE_DIR="$INSTALL_WM_DIR"
 ############################################################################################################################### FUNCTION
 ################### PREREQUSITES FROM PACKAGES.TXT (YAY/PARU, FLATPAK & PACMAN)
 
-# Function to check if a package is installed
-is_installed() {
-    command -v "$1" >/dev/null 2>&1
-}
-
-# Function to install a package using the appropriate package manager
-install_with_package_manager() {
-    local manager="$1"
-    local package="$2"
-
-    case $manager in
-        yay|paru)
-            if ! is_installed "$manager"; then
-                echo "$manager is not installed. Installing $manager..."
-                sudo pacman -S --noconfirm "$manager"
-            fi
-            sudo "$manager" -S --noconfirm "$package"
-            ;;
-        pacman)
-            if ! is_installed "pacman"; then
-                echo "Pacman is not installed. Please install it first."
-                exit 1
-            fi
-            sudo pacman -S --noconfirm "$package"
-            ;;
-        flatpak)
-            if ! is_installed "flatpak"; then
-                echo "Flatpak is not installed. Installing Flatpak..."
-                sudo pacman -S --noconfirm flatpak
-            fi
-            flatpak install -y "$package"
-            ;;
-        *)
-            echo "Unknown package manager: $manager"
-            ;;
-    esac
-}
-
-# Function to read and install packages from the packages.txt file
 install_packages() {
     while IFS= read -r line; do
-        # Skip empty lines and comments
-        [[ -z "$line" || "$line" =~ ^# ]] && continue
+        # Skip comments and empty lines
+        [[ "$line" =~ ^# || -z "$line" ]] && continue
 
-        # Extract manager, package, and description
-        if [[ "$line" =~ ^\# ]]; then
-            continue
-        elif [[ "$line" =~ ^##### ]]; then
-            section="${line###### }"
-            echo "Installing packages from section: $section"
+        # Extract package manager and package
+        package_manager=$(echo "$line" | awk '{print $1}' | tr -d '"')
+        package=$(echo "$line" | awk '{print $2}' | tr -d '"')
+
+        # Check if the package is already installed
+        if ! command -v "$package" &>/dev/null; then
+            echo -e "${YELLOW}Installing $package using $package_manager...${NC}"
+            case $package_manager in
+                pacman)
+                    sudo pacman -S --noconfirm "$package"
+                    ;;
+                yay)
+                    yay -S --noconfirm "$package"
+                    ;;
+                paru)
+                    paru -S --noconfirm "$package"
+                    ;;
+                flatpak)
+                    flatpak install -y "$package"
+                    ;;
+                *)
+                    echo -e "${RED}Unknown package manager: $package_manager${NC}"
+                    ;;
+            esac
         else
-            # Read the manager and package
-            if [[ "$line" =~ ^\"([^\"]+)\" ]]; then
-                manager="${BASH_REMATCH[1]}"
-                package="$(echo "$line" | awk '{print $2}' | tr -d '\"')"
-                install_with_package_manager "$manager" "$package"
-            fi
+            echo -e "${BLUE}$package is already installed.${NC}"
         fi
     done < "$FROM_PACKAGES"
 }
@@ -190,3 +164,8 @@ install_packages() {
 
 ############################################################################################################################### MAIN FUNCTION
 ################### MAIN LOGIC
+
+echo -e "${GREEN}Starting package installation...${NC}"
+install_packages
+echo -e "${CYAN}Package installation complete!${NC}"
+
