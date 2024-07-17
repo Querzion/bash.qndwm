@@ -60,6 +60,6 @@ pavucontrol
 pulseaudio
 #pulseaudio-module-bluetooth
 pamixer
-pulseaudio-equalizer
+#pulseaudio-equalizer
 #alsa-utils
 volumeicon
