@@ -1,3 +1,5 @@
+#  NAME - LINK - DETAILS
+
 # Patches for dwm
 dwm  https://dwm.suckless.org/patches/attachaside/dwm-attachaside-6.2.diff        "Attach Aside - Add functionality to attach windows to the side"
 dwm  https://dwm.suckless.org/patches/gaps/dwm-gaps-6.2.diff                      "Gaps - Implement gaps between windows"
