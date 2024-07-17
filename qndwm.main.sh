@@ -55,7 +55,7 @@ BASEDIR="$HOME/bash.qndwm"
 FROM_FONT="$BASEDIR/files/fonts.txt"
 FROM_APP="$BASEDIR/files/app_info.txt"
 FROM_PATCH="$BASEDIR/files/patches.txt"
-FROM_PACKAGES="$BASEDIR/files/packages.txt"
+FROM_PACKAGES_LIST="$BASEDIR/files/packages.txt"
 FROM_THEMES="$BASEDIR/files/configurations/theming" 
 FROM_THEME_FIREFOX="$FROM_THEMES/firefox"
 FROM_THEME_FASTFETCH="$FROM_THEMES/fastfetch"
@@ -80,7 +80,7 @@ INSTALL_QnDWM_FILE_DIR="$INSTALL_WM_DIR"
 
 
 ############################################################################################################################### FUNCTION
-################### PREREQUSITES FROM PACKAGES.TXT (YAY/PARU, FLATPAK & PACMAN)
+################### PREREQUSITES | INSTALLATION OF PACKAGE MANAGERS
 
 install_aur_helper() {
     local helper=$1
@@ -90,15 +90,20 @@ install_aur_helper() {
         return 1
     fi
 
+    if command -v "$helper" &>/dev/null; then
+        echo -e "${GREEN}$helper is already installed.${NC}"
+        return 0
+    fi
+
     echo -e "${CYAN}Installing $helper...${NC}"
-    
+
     sudo pacman -S --needed base-devel git
-    
+
     git clone https://aur.archlinux.org/${helper}.git
     cd $helper || { echo -e "${RED}Failed to enter directory${NC}"; return 1; }
-    
+
     makepkg -si
-    
+
     cd ..
     rm -rf $helper
 
@@ -106,57 +111,82 @@ install_aur_helper() {
 }
 
 install_flatpak() {
+    if command -v flatpak &>/dev/null; then
+        echo -e "${GREEN}flatpak is already installed.${NC}"
+        return 0
+    fi
+
     echo -e "${CYAN}Installing flatpak...${NC}"
-    
+
     sudo pacman -S flatpak
-    
+
     sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    
+
     flatpak update
 
     echo -e "${GREEN}flatpak installed successfully.${NC}"
 }
 
-install_all() {
+install_package_managers() {
     install_aur_helper yay
     install_aur_helper paru
     install_flatpak
 }
 
-# Old install script.
-install_packages() {
+package_manager_version() {
+    echo -e "${PURPLE}$(pacman --version)${NC}"
+    echo -e "${PURPLE}$(yay --version)${NC}"
+    echo -e "${PURPLE}$(paru --version)${NC}"
+    echo -e "${PURPLE}$(flatpak --version)${NC}"
+}
+
+############################################################################################################################### FUNCTION
+################### INSTALLATION OF PACKAGES
+
+
+# Function to install packages using different package managers
+install_package() {
+    local manager=$1
+    local package=$2
+
+    case "$manager" in
+        pacman)
+            sudo pacman -S --noconfirm "$package"
+            ;;
+        yay)
+            yay -S --noconfirm "$package"
+            ;;
+        paru)
+            paru -S --noconfirm "$package"
+            ;;
+        flatpak)
+            # Extract remote and app ID for flatpak
+            remote=$(echo "$package" | cut -d'/' -f1)
+            app_id=$(echo "$package" | cut -d'/' -f2-)
+            flatpak install -y "$remote" "$app_id"
+            ;;
+        *)
+            echo "Unknown package manager: $manager"
+            ;;
+    esac
+}
+
+# Function to read the package list and install packages
+read_package_list() {
+    local package_list="$1"
+
+    # Read the package list file line by line
     while IFS= read -r line; do
-        # Skip comments and empty lines
-        [[ "$line" =~ ^# || -z "$line" ]] && continue
+        # Skip empty lines and lines starting with ###
+        [[ -z "$line" || "$line" =~ ^### ]] && continue
 
-        # Extract package manager and package
-        package_manager=$(echo "$line" | awk '{print $1}' | tr -d '"')
-        package=$(echo "$line" | awk '{print $2}' | tr -d '"')
-
-        # Check if the package is already installed
-        if ! command -v "$package" &>/dev/null; then
-            echo -e "${PURPLE}Installing $package using $package_manager...${NC}"
-            case $package_manager in
-                pacman)
-                    sudo pacman -S --noconfirm "$package"
-                    ;;
-                yay)
-                    yay -S --noconfirm "$package"
-                    ;;
-                paru)
-                    paru -S --noconfirm "$package"
-                    ;;
-                flatpak)
-                    flatpak install -y "$package"
-                    ;;
-                *)
-                    echo -e "${RED}Unknown package manager: $package_manager${NC}"
-                    ;;
-            esac
-        else
-            echo -e "${YELLOW}$package is already installed.${NC}"
+        # Parse the line to get the package manager and package name
+        if [[ "$line" =~ ^\"(.+)\"\ \"(.+)\" ]]; then
+            manager="${BASH_REMATCH[1]}"
+            package="${BASH_REMATCH[2]}"
+            install_package "$manager" "$package"
         fi
-    done < "$FROM_PACKAGES"
+    done < "$package_list"
 }
 
 
@@ -207,10 +237,18 @@ install_packages() {
 ############################################################################################################################### MAIN FUNCTION
 ################### MAIN LOGIC
 
-#Install package managers paru, yay, flatpak.
-install_all
+# Install package managers paru, yay, flatpak.
+install_package_managers
+    
+# Check the version of pacman, yay, paru, flatpak
+package_manager_version
+    
+# Pause the script
+echo -e "${GREEN} PRESS ENTER TO CONTINUE. ${NC}"
+read
 
-echo -e "${GREEN}Installing packages from $FROM_PACKAGES...${NC}"
-#install_packages
+# Call the function to read the package list and install packages
+read_package_list "$FROM_PACKAGES_LIST"
+
 echo -e "${CYAN}Installation complete!${NC}"
 
