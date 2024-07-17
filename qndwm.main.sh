@@ -92,7 +92,7 @@ install_aur_helper() {
 
     echo "Installing $helper..."
     
-    sudo pacman -S --needed base-devel git
+    sudo pacman -S --needed base-devel git -y
     
     git clone https://aur.archlinux.org/${helper}.git
     cd $helper || { echo "Failed to enter directory"; return 1; }
@@ -108,7 +108,7 @@ install_aur_helper() {
 install_flatpak() {
     echo "Installing flatpak..."
     
-    sudo pacman -S flatpak
+    sudo pacman -S flatpak --noconfirm
     
     sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     
