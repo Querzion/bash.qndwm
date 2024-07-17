@@ -84,12 +84,23 @@ INSTALL_QnDWM_FILE_DIR="$INSTALL_WM_DIR"
 
 # Function to install package managers if not installed
 install_package_managers() {
-    for manager in flatpak yay paru; do
-        if ! command -v "$manager" &>/dev/null; then
-            echo -e "${YELLOW}Installing $manager...${NC}"
-            sudo pacman -S --noconfirm "$manager"
-        fi
-    done
+    # Install Yay if not installed
+if ! command -v yay &>/dev/null; then
+    echo -e "${YELLOW}Installing Yay...${NC}"
+    sudo pacman -S --noconfirm yay
+fi
+
+# Install Paru if not installed
+if ! command -v paru &>/dev/null; then
+    echo -e "${YELLOW}Installing Paru...${NC}"
+    sudo pacman -S --noconfirm paru
+fi
+
+# Install Flatpak if not installed
+if ! command -v flatpak &>/dev/null; then
+    echo -e "${YELLOW}Installing Flatpak...${NC}"
+    sudo pacman -S --noconfirm flatpak
+fi
 }
 
 
