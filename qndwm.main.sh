@@ -82,8 +82,6 @@ INSTALL_QnDWM_FILE_DIR="$INSTALL_WM_DIR"
 ############################################################################################################################### FUNCTION
 ################### PREREQUSITES FROM PACKAGES.TXT (YAY/PARU, FLATPAK & PACMAN)
 
-# Function to install package managers if not installed
-install_package_managers() {
     # Install Yay if not installed
 if ! command -v yay &>/dev/null; then
     echo -e "${YELLOW}Installing Yay...${NC}"
@@ -101,11 +99,9 @@ if ! command -v flatpak &>/dev/null; then
     echo -e "${YELLOW}Installing Flatpak...${NC}"
     sudo pacman -S --noconfirm flatpak
 fi
-}
-
 
 # New install script.
-install_packages() {
+#install_packages() {
     while IFS= read -r line; do
         [[ -z "$line" || "$line" =~ ^# ]] && continue
         manager=$(echo "$line" | awk '{print $1}' | tr -d '"')
@@ -205,10 +201,8 @@ install_packages() {
 ############################################################################################################################### MAIN FUNCTION
 ################### MAIN LOGIC
 
-echo -e "${GREEN}Installing package managers...${NC}"
-install_package_managers
 
 echo -e "${GREEN}Installing packages from $FROM_PACKAGES...${NC}"
-install_packages
+#install_packages
 echo -e "${CYAN}Installation complete!${NC}"
 
