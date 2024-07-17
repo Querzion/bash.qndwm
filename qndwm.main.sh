@@ -51,6 +51,7 @@ NC='\033[0m' # No Color
 
 USER="$(whoami)"
 BASEDIR="$HOME/bash.qndwm"
+ERROR_LOG="$HOME/install.errors.txt"
 
 FROM_FONT="$BASEDIR/files/fonts.txt"
 FROM_APP="$BASEDIR/files/app_info.txt"
@@ -150,24 +151,47 @@ install_package() {
     local manager=$1
     local package=$2
 
+    # Check if the package is already installed
     case "$manager" in
         pacman)
-            sudo pacman -S --noconfirm "$package"
+            if pacman -Q "$package" &>/dev/null; then
+                echo "Package $package is already installed. Skipping."
+                return
+            fi
             ;;
-        yay)
-            yay -S --noconfirm "$package"
-            ;;
-        paru)
-            paru -S --noconfirm "$package"
+        yay|paru)
+            if pacman -Q "$package" &>/dev/null; then
+                echo "Package $package is already installed. Skipping."
+                return
+            fi
             ;;
         flatpak)
-            # Extract remote and app ID for flatpak
-            remote=$(echo "$package" | cut -d'/' -f1)
-            app_id=$(echo "$package" | cut -d'/' -f2-)
-            flatpak install -y "$remote" "$app_id"
+            if flatpak list --app | grep -q "$package"; then
+                echo "Package $package is already installed. Skipping."
+                return
+            fi
             ;;
         *)
             echo "Unknown package manager: $manager"
+            return
+            ;;
+    esac
+
+    # Attempt to install the package
+    case "$manager" in
+        pacman)
+            sudo pacman -S --noconfirm "$package" || echo "$manager $package" >> "$ERROR_LOG"
+            ;;
+        yay)
+            yay -S --noconfirm "$package" || echo "$manager $package" >> "$ERROR_LOG"
+            ;;
+        paru)
+            paru -S --noconfirm "$package" || echo "$manager $package" >> "$ERROR_LOG"
+            ;;
+        flatpak)
+            remote=$(echo "$package" | cut -d'/' -f1)
+            app_id=$(echo "$package" | cut -d'/' -f2-)
+            flatpak install -y "$remote" "$app_id" || echo "$manager $package" >> "$ERROR_LOG"
             ;;
     esac
 }
@@ -178,8 +202,8 @@ read_package_list() {
 
     # Read the package list file line by line
     while IFS= read -r line; do
-        # Skip empty lines and lines starting with #
-        [[ -z "$line" || "$line" =~ ^# ]] && continue
+        # Skip empty lines and lines starting with ###
+        [[ -z "$line" || "$line" =~ ^### ]] && continue
 
         # Parse the line to get the package manager and package name
         if [[ "$line" =~ ^\"(.+)\"\ \"(.+)\" ]]; then
@@ -247,6 +271,9 @@ package_manager_version
 # Pause the script
 echo -e "${GREEN} PRESS ENTER TO CONTINUE. ${NC}"
 read
+
+# Clear the error log file
+> "$ERROR_LOG"
 
 # Call the function to read the package list and install packages
 read_package_list "$FROM_PACKAGES_LIST"
