@@ -118,8 +118,8 @@ install_flatpak() {
 }
 
 install_all() {
-    install_aur_helper paru
     install_aur_helper yay
+    install_aur_helper paru
     install_flatpak
 }
 
