@@ -135,7 +135,7 @@ install_packages() {
 
         # Check if the package is already installed
         if ! command -v "$package" &>/dev/null; then
-            echo -e "${YELLOW}Installing $package using $package_manager...${NC}"
+            echo -e "${PURPLE}Installing $package using $package_manager...${NC}"
             case $package_manager in
                 pacman)
                     sudo pacman -S --noconfirm "$package"
@@ -154,7 +154,7 @@ install_packages() {
                     ;;
             esac
         else
-            echo -e "${BLUE}$package is already installed.${NC}"
+            echo -e "${YELLOW}$package is already installed.${NC}"
         fi
     done < "$FROM_PACKAGES"
 }
