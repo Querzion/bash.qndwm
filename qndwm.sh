@@ -46,6 +46,19 @@ NC='\033[0m' # No Color
 
 ############################### SETTINGS
 
+# Script Folder
+BASEDIR="$HOME/bash.qndwm"
+# Script Folder Path
+LOCATION="$BASEDIR/files"
+# Installation Path
+INSTALL_LOCATION="$HOME/.config/wm"
+# Directory to save backups 
+BACKUP_DIR="$INSTALL_LOCATION/backups"
+# Critical font
+CRITICAL_FONT_NAME="JetBrains Mono"
+CRITICAL_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip"
+# Directory to install fonts
+FONT_DIR="$HOME/.local/share/fonts"
 # User Name (Automagic Entry)
 USER="$(whoami)"
 # Path to the app_info.txt file
@@ -65,19 +78,7 @@ QnDWM_FILE="run.qndwm.sh"
 
 ################################################################### FILE & FOLDER PATHS
 
-# Script Folder
-BASEDIR="$HOME/bash.qndwm"
-# Script Folder Path
-LOCATION="$BASEDIR/files"
-# Installation Path
-INSTALL_LOCATION="$HOME/.config/wm"
-# Directory to save backups 
-BACKUP_DIR="$INSTALL_LOCATION/backups"
-# Critical font
-CRITICAL_FONT_NAME="JetBrains Mono"
-CRITICAL_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip"
-# Directory to install fonts
-FONT_DIR="$HOME/.local/share/fonts"
+
 
 
 ######################################################################################################### TERMINAL PROMT FUNCTION
