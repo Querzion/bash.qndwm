@@ -43,7 +43,7 @@
 ##### Video Codecs
 "pacman" "ffmpeg" # FFmpeg multimedia framework
 "pacman" "libx264" # H.264 codec
-"pacman" "ffhevc" # H.265 codec
+"yay" "ffhevc" # H.265 codec
 "pacman" "libvpx" # VP8/VP9 codec
 "pacman" "gstreamer" # GStreamer multimedia framework
 
@@ -137,7 +137,7 @@
 "pacman" "mangohud" # Performance overlay
 
 ##### Streaming Applications
-"flatpak" "flathub/com.obsproject.OBS" # OBS Studio for streaming
+"flatpak" "flathub/com.obsproject.Studio" # OBS Studio for streaming
 "pacman" "discord" # Discord communication app
 "flatpak" "flathub/com.discordapp.Discord" # Discord (Flatpak)
 "pacman" "vlc" # VLC media player
