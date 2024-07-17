@@ -123,24 +123,6 @@ install_all() {
     install_flatpak
 }
 
-
-# New install script.
-install_packages() {
-    while IFS= read -r line; do
-        [[ -z "$line" || "$line" =~ ^# ]] && continue
-        manager=$(echo "$line" | awk '{print $1}' | tr -d '"')
-        package=$(echo "$line" | awk '{print $2}' | tr -d '"')
-
-        echo -e "${BLUE}Installing $package using $manager...${NC}"
-        case $manager in
-            yay|paru) sudo "$manager" -S --noconfirm "$package" ;;
-            flatpak) flatpak install -y "$package" ;;
-            pacman) sudo pacman -S --noconfirm "$package" ;;
-            *) echo -e "${RED}Unknown package manager: $manager${NC}" ;;
-        esac
-    done < "$FROM_PACKAGES"
-}
-
 # Old install script.
 install_packages() {
     while IFS= read -r line; do
