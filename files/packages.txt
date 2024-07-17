@@ -16,7 +16,7 @@ scrot
 duf
 unzip
 variety
-arcolinux-tweak-tool-git
+#arcolinux-tweak-tool-git
 gucharmap
 firefox
 zed
