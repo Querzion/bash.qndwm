@@ -58,7 +58,7 @@ pipewire
 pipewire-pulse
 pavucontrol
 pulseaudio
-pulseaudio-module-bluetooth
+#pulseaudio-module-bluetooth
 pamixer
 pulseaudio-equalizer
 #alsa-utils
