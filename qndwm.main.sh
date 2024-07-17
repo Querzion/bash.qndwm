@@ -87,37 +87,37 @@ install_aur_helper() {
     local helper=$1
 
     if [[ -z "$helper" ]]; then
-        echo -e "${RED}Usage: install_aur_helper <helper_name>${NC}"
+        echo -e "${RED} Usage: install_aur_helper <helper_name>${NC}"
         return 1
     fi
 
     if command -v "$helper" &>/dev/null; then
-        echo -e "${GREEN}$helper is already installed.${NC}"
+        echo -e "${GREEN} $helper is already installed.${NC}"
         return 0
     fi
 
-    echo -e "${CYAN}Installing $helper...${NC}"
+    echo -e "${CYAN} Installing $helper...${NC}"
 
     sudo pacman -S --needed base-devel git
 
     git clone https://aur.archlinux.org/${helper}.git
-    cd $helper || { echo -e "${RED}Failed to enter directory${NC}"; return 1; }
+    cd $helper || { echo -e "${RED} Failed to enter directory${NC}"; return 1; }
 
     makepkg -si
 
     cd ..
     rm -rf $helper
 
-    echo -e "${GREEN}$helper installed successfully.${NC}"
+    echo -e "${GREEN} $helper installed successfully.${NC}"
 }
 
 install_flatpak() {
     if command -v flatpak &>/dev/null; then
-        echo -e "${GREEN}flatpak is already installed.${NC}"
+        echo -e "${GREEN} flatpak is already installed.${NC}"
         return 0
     fi
 
-    echo -e "${CYAN}Installing flatpak...${NC}"
+    echo -e "${CYAN} Installing flatpak...${NC}"
 
     sudo pacman -S flatpak
 
@@ -125,7 +125,7 @@ install_flatpak() {
 
     flatpak update
 
-    echo -e "${GREEN}flatpak installed successfully.${NC}"
+    echo -e "${GREEN} flatpak installed successfully.${NC}"
 }
 
 install_package_managers() {
@@ -251,5 +251,5 @@ read
 # Call the function to read the package list and install packages
 read_package_list "$FROM_PACKAGES_LIST"
 
-echo -e "${CYAN}Installation complete!${NC}"
+echo -e "${CYAN} Installation complete!${NC}"
 
