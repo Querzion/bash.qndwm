@@ -86,35 +86,35 @@ install_aur_helper() {
     local helper=$1
 
     if [[ -z "$helper" ]]; then
-        echo "Usage: install_aur_helper <helper_name>"
+        echo -e "${RED}Usage: install_aur_helper <helper_name>${NC}"
         return 1
     fi
 
-    echo "Installing $helper..."
+    echo -e "${CYAN}Installing $helper...${NC}"
     
-    sudo pacman -S --needed base-devel git -y
+    sudo pacman -S --needed base-devel git
     
     git clone https://aur.archlinux.org/${helper}.git
-    cd $helper || { echo "Failed to enter directory"; return 1; }
+    cd $helper || { echo -e "${RED}Failed to enter directory${NC}"; return 1; }
     
     makepkg -si
     
     cd ..
     rm -rf $helper
 
-    echo "$helper installed successfully."
+    echo -e "${GREEN}$helper installed successfully.${NC}"
 }
 
 install_flatpak() {
-    echo "Installing flatpak..."
+    echo -e "${CYAN}Installing flatpak...${NC}"
     
-    sudo pacman -S flatpak --noconfirm
+    sudo pacman -S flatpak
     
     sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     
     flatpak update
 
-    echo "flatpak installed successfully."
+    echo -e "${GREEN}flatpak installed successfully.${NC}"
 }
 
 install_all() {
