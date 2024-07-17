@@ -82,23 +82,9 @@ INSTALL_QnDWM_FILE_DIR="$INSTALL_WM_DIR"
 ############################################################################################################################### FUNCTION
 ################### PREREQUSITES FROM PACKAGES.TXT (YAY/PARU, FLATPAK & PACMAN)
 
-    # Install Yay if not installed
-if ! command -v yay &>/dev/null; then
-    echo -e "${YELLOW}Installing Yay...${NC}"
-    sudo pacman -S --noconfirm yay
-fi
+# Install package managers
+sudo pacman -S --noconfirm yay paru flatpak
 
-# Install Paru if not installed
-if ! command -v paru &>/dev/null; then
-    echo -e "${YELLOW}Installing Paru...${NC}"
-    sudo pacman -S --noconfirm paru
-fi
-
-# Install Flatpak if not installed
-if ! command -v flatpak &>/dev/null; then
-    echo -e "${YELLOW}Installing Flatpak...${NC}"
-    sudo pacman -S --noconfirm flatpak
-fi
 
 # New install script.
 #install_packages() {
