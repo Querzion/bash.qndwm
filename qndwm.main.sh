@@ -62,6 +62,7 @@ FROM_THEME_FASTFETCH="$FROM_THEMES/fastfetch"
 FROM_THEME_GRUB_1K="$FROM_THEMES/grub/1920x1080"
 FROM_THEME_GRUB_2K="$FROM_THEMES/grub/2560x1440"
 FROM_THEME_GRUB_4K="$FROM_THEMES/grub/3840x2160"
+FROM_SCRIPT="$BASEDIER/files/scripts"
 
 TO_INSTALL_WM_DIR="~/.config/wm"
 TO_BACKUP_WM_DIR="$TO_INSTALL_WM_DIR/backups"
@@ -177,8 +178,8 @@ read_package_list() {
 
     # Read the package list file line by line
     while IFS= read -r line; do
-        # Skip empty lines and lines starting with ###
-        [[ -z "$line" || "$line" =~ ^### ]] && continue
+        # Skip empty lines and lines starting with #
+        [[ -z "$line" || "$line" =~ ^# ]] && continue
 
         # Parse the line to get the package manager and package name
         if [[ "$line" =~ ^\"(.+)\"\ \"(.+)\" ]]; then

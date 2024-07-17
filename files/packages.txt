@@ -121,6 +121,7 @@
 "pacman" "libxmu" # Xmu library
 "pacman" "gtk3" # GTK+ 3 toolkit
 "pacman" "qt5-base" # Qt 5 base libraries
+#"pacman" "qt6-base" # Qt 6 base libraries
 "pacman" "webkit2gtk" # WebKit2GTK library
 
 ##### Web Browsers
