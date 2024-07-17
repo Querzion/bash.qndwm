@@ -55,7 +55,7 @@ BASEDIR="~/bash.qndwm"
 FROM_FONT="$BASEDIR/files/fonts.txt"
 FROM_APP="$BASEDIR/files/app_info.txt"
 FROM_PATCH="$BASEDIR/files/patches.txt"
-FROM_PACKAGE="$BASEDIR/files/packages.txt"
+FROM_PACKAGES="$BASEDIR/files/packages.txt"
 FROM_THEMES="$BASEDIR/files/configurations/theming" 
 FROM_THEME_FIREFOX="$FROM_THEMES/firefox"
 FROM_THEME_FASTFETCH="$FROM_THEMES/fastfetch"
@@ -80,56 +80,112 @@ INSTALL_QnDWM_FILE_DIR="$INSTALL_WM_DIR"
 
 
 ############################################################################################################################### FUNCTION
-################### PREREQUSITES FROM PACKAGES.TXT ()
+################### PREREQUSITES FROM PACKAGES.TXT (YAY/PARU, FLATPAK & PACMAN)
 
-Packages.txt looks like this
-"yay" "application"
-"pacman" "application"
-"flatpak" "application"
+# Function to check if a package is installed
+is_installed() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+# Function to install a package using the appropriate package manager
+install_with_package_manager() {
+    local manager="$1"
+    local package="$2"
+
+    case $manager in
+        yay|paru)
+            if ! is_installed "$manager"; then
+                echo "$manager is not installed. Installing $manager..."
+                sudo pacman -S --noconfirm "$manager"
+            fi
+            sudo "$manager" -S --noconfirm "$package"
+            ;;
+        pacman)
+            if ! is_installed "pacman"; then
+                echo "Pacman is not installed. Please install it first."
+                exit 1
+            fi
+            sudo pacman -S --noconfirm "$package"
+            ;;
+        flatpak)
+            if ! is_installed "flatpak"; then
+                echo "Flatpak is not installed. Installing Flatpak..."
+                sudo pacman -S --noconfirm flatpak
+            fi
+            flatpak install -y "$package"
+            ;;
+        *)
+            echo "Unknown package manager: $manager"
+            ;;
+    esac
+}
+
+# Function to read and install packages from the packages.txt file
+install_packages() {
+    while IFS= read -r line; do
+        # Skip empty lines and comments
+        [[ -z "$line" || "$line" =~ ^# ]] && continue
+
+        # Extract manager, package, and description
+        if [[ "$line" =~ ^\# ]]; then
+            continue
+        elif [[ "$line" =~ ^##### ]]; then
+            section="${line###### }"
+            echo "Installing packages from section: $section"
+        else
+            # Read the manager and package
+            if [[ "$line" =~ ^\"([^\"]+)\" ]]; then
+                manager="${BASH_REMATCH[1]}"
+                package="$(echo "$line" | awk '{print $2}' | tr -d '\"')"
+                install_with_package_manager "$manager" "$package"
+            fi
+        fi
+    done < "$FROM_PACKAGES"
+}
 
 
 ############################################################################################################################### FUNCTION
-################### INSTALL DWM IN "TO_INSTALL_WM_DIR" FROM 
+################### INSTALL DWM IN "TO_INSTALL_WM_DIR" FROM "~/bash.qndwm/files/scripts/install.and.patch.dwm.sh"
 
 
 ############################################################################################################################### FUNCTION
-################### INSTALL ST IN "TO_INSTALL_WM_DIR"
+################### INSTALL ST IN "TO_INSTALL_WM_DIR" FROM "~/bash.qndwm/files/scripts/install.and.patch.st.sh"
 
 
 ############################################################################################################################### FUNCTION
-################### INSTALL DMENU IN "TO_INSTALL_WM_DIR"
+################### INSTALL DMENU IN "TO_INSTALL_WM_DIR" FROM "~/bash.qndwm/files/scripts/install.and.patch.dmenu.sh"
 
 
 ############################################################################################################################### FUNCTION
-################### INSTALL ROFI IN "TO_INSTALL_WM_DIR"
+################### INSTALL ROFI IN "TO_INSTALL_WM_DIR" FROM "~/bash.qndwm/files/scripts/install.and.patch.rofi.sh"
 
 
 ############################################################################################################################### FUNCTION
-################### INSTALL DWMBLOCKS IN "TO_INSTALL_WM_DIR"
+################### INSTALL DWMBLOCKS IN "TO_INSTALL_WM_DIR" FROM "~/bash.qndwm/files/scripts/install.and.patch.dwmblocks.sh"
 
 
 ############################################################################################################################### FUNCTION
-################### INSTALL SLSTATUS IN "TO_INSTALL_WM_DIR"
+################### INSTALL SLSTATUS IN "TO_INSTALL_WM_DIR" FROM "~/bash.qndwm/files/scripts/install.and.patch.slstatus.sh"
 
 
 ############################################################################################################################### FUNCTION
-################### INSTALL NNN IN "TO_INSTALL_WM_DIR"
+################### INSTALL NNN IN "TO_INSTALL_WM_DIR" FROM "~/bash.qndwm/files/scripts/install.and.patch.nnn.sh"
 
 
 ############################################################################################################################### FUNCTION
-################### PREREQUSITES
+################### 
 
 
 ############################################################################################################################### FUNCTION
-################### PREREQUSITES
+################### 
 
 
 ############################################################################################################################### FUNCTION
-################### PREREQUSITES
+################### 
 
 
 ############################################################################################################################### FUNCTION
-################### PREREQUSITES
+################### 
 
 
 ############################################################################################################################### MAIN FUNCTION

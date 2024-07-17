@@ -9,57 +9,150 @@
 ###
 
 
-########## Applications
-rofi
-feh
-scrot
-duf
-unzip
-variety
-#arcolinux-tweak-tool-git
-gucharmap
-firefox
-zed
+##### Base System
+"pacman" "base" # Base system
+"pacman" "base-devel" # Base development tools
+"pacman" "xorg" # Xorg server
+"pacman" "xorg-utils" # Xorg utilities
+"pacman" "xorg-server" # Xorg server package
+"pacman" "xorg-xinit" # Xinit for starting X sessions
+"pacman" "xorg-xkb-layouts" # XKB layouts for Xorg
+"pacman" "xev" # X event tester
+"pacman" "timeshift" # System backup tool
 
-######### System
-xorg
-xorg-xinit
-xorg-server
-xorg-xsetroot
-terminus-font
-base 
-base-devel
-libx11
-libxft
-imlib2
-libbsd
-libxcomposite
-libxext
-libxfixes
-libxinerama
-autoconf-archive
-slim
-slim-themes
-archlinux-themes-slim
-xbindkeys
-wget
-fontconfig
-#ttf-ms-win8-1
-#ttf-ms-win8-2
-#ttf-ms-win10-1
-#ttf-ms-win10-2
-fastfetch
-btop
-#nim
-fzf
+##### Text Editors
+"pacman" "vim" # Vim text editor
+"pacman" "nano" # Nano text editor
+"yay" "visual-studio-code-bin" # Visual Studio Code editor
+"paru" "neovim" # Neovim text editor
+"yay" "zed" # Zed editor
 
-######### AUDIO
-pipewire
-pipewire-pulse
-pavucontrol
-pulseaudio
-#pulseaudio-module-bluetooth
-pamixer
-#pulseaudio-equalizer
-#alsa-utils
-volumeicon
+##### System Utilities
+"pacman" "btop" # Btop process viewer
+"pacman" "fastfetch" # Fast fetch utility
+"pacman" "duf" # Disk usage utility
+"pacman" "unzip" # Unzip utility
+"pacman" "zip" # Zip utility
+"pacman" "patch" # Patch utility
+"pacman" "wget" # Wget utility
+"pacman" "volumeicon" # Volume icon for tray
+
+##### Application Launchers
+"pacman" "rofi" # Rofi application launcher
+"pacman" "xbindkeys" # Xbindkeys for keyboard shortcuts
+
+##### Image Utilities
+"pacman" "feh" # Feh image viewer
+"flatpak" "flathub/org.gimp.GIMP" # GIMP image editor
+"pacman" "variety" # Wallpaper changer
+
+##### Video Codecs
+"pacman" "ffmpeg" # FFmpeg multimedia framework
+"pacman" "libx264" # H.264 codec
+"pacman" "libx265" # H.265 codec
+"pacman" "libvpx" # VP8/VP9 codec
+"pacman" "gstreamer" # GStreamer multimedia framework
+"pacman" "gstreamer-plugins-good" # Good set of GStreamer plugins
+"pacman" "gstreamer-plugins-bad" # Bad set of GStreamer plugins
+"pacman" "gstreamer-plugins-ugly" # Ugly set of GStreamer plugins
+
+##### Terminal Emulators
+"pacman" "kitty" # Kitty terminal emulator
+"pacman" "alacritty" # Alacritty terminal emulator
+
+##### Audio & Multimedia
+"pacman" "pipewire" # PipeWire media server
+"pacman" "pipewire-pulse" # PipeWire PulseAudio replacement
+"pacman" "pulseaudio" # PulseAudio sound server
+"pacman" "pavucontrol" # PulseAudio volume control
+"pacman" "pamixer" # PAMixer volume control
+
+##### Bluetooth Utilities
+"pacman" "bluez" # Bluetooth support
+"pacman" "bluez-utils" # Bluetooth utilities
+"pacman" "blueman" # Bluetooth manager
+"pacman" "blueberry" # Bluetooth manager for XFCE
+"pacman" "blueberry-systray" # Blueberry systray applet
+
+##### Network Management
+"pacman" "network-manager" # Network Manager
+"pacman" "nm-applet" # Network Manager applet
+"pacman" "dhcpcd" # DHCP client daemon
+"pacman" "openvpn" # OpenVPN client
+"pacman" "nss-mdns" # Multicast DNS resolver
+"pacman" "wpasupplicant" # WPA supplicant
+"pacman" "samba" # Samba for file sharing
+"pacman" "smbclient" # Samba client utilities
+"pacman" "nfs-utils" # NFS utilities
+"pacman" "ufw" # Uncomplicated Firewall
+"pacman" "firewalld" # Firewall service
+"pacman" "avahi" # mDNS/DNS-SD daemon
+"pacman" "cifs-utils" # CIFS utilities
+"pacman" "inetutils" # Basic network utilities
+
+##### Database Libraries
+"pacman" "postgresql-libs" # PostgreSQL libraries
+"pacman" "mariadb-libs" # MariaDB libraries
+
+##### Programming Languages
+"pacman" "python" # Python programming language
+"pacman" "ruby" # Ruby programming language
+"pacman" "perl" # Perl programming language
+"pacman" "lua" # Lua programming language
+"pacman" "dotnet-sdk" # .NET SDK
+"pacman" "nodejs" # Node.js JavaScript runtime
+"pacman" "npm" # Node.js package manager
+"pacman" "cmake" # CMake build system
+"pacman" "meson" # Meson build system
+"pacman" "ninja" # Ninja build system
+"pacman" "yasm" # Yasm assembler
+"pacman" "nasm" # Netwide Assembler
+"pacman" "sqlite" # SQLite database
+"pacman" "meld" # Meld diff tool
+"pacman" "docker" # Docker container platform
+"pacman" "nim" # Nim programming language
+
+##### Libraries
+"pacman" "libx11" # X11 library
+"pacman" "libxft" # Xft library
+"pacman" "libxinerama" # Xinerama library
+"pacman" "libxrandr" # Xrandr library
+"pacman" "libxext" # XExt library
+"pacman" "libxt" # Xt library
+"pacman" "libgl" # OpenGL library
+"pacman" "libxi" # XInput library
+"pacman" "libxmu" # Xmu library
+"pacman" "gtk3" # GTK+ 3 toolkit
+"pacman" "qt5-base" # Qt 5 base libraries
+"pacman" "webkit2gtk" # WebKit2GTK library
+
+##### Web Browsers
+"flatpak" "flathub/com.brave.Browser" # Brave browser
+"pacman" "firefox" # Firefox browser
+
+##### Password Managers
+"flatpak" "flathub/org.keepassxc.KeePassXC" # KeePassXC password manager
+
+##### Gaming Applications
+"pacman" "steam" # Game platform
+"pacman" "lutris" # Game manager
+"pacman" "wine" # Windows compatibility layer
+"pacman" "heroic" # Epic Games launcher
+"pacman" "proton-ge" # Proton for gaming
+"pacman" "emudeck" # EmuDeck for emulation
+"pacman" "gamescope" # Game session manager
+"pacman" "gamemode" # Gaming performance manager
+"pacman" "mangohud" # Performance overlay
+
+##### Streaming Applications
+"flatpak" "flathub/com.obsproject OBS" # OBS Studio for streaming
+"pacman" "discord" # Discord communication app
+"flatpak" "flathub/com.discordapp.Discord" # Discord (Flatpak)
+"pacman" "vlc" # VLC media player
+"pacman" "mpv" # MPV media player
+
+##### Miscellaneous
+"pacman" "gucharmap" # Character map
+"pacman" "fontconfig" # Font configuration library
+"yay" "arcolinux-tweak-tool-git" # ArcoLinux Tweak Tool
+
