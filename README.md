@@ -74,7 +74,7 @@ A more detailed list is the actual (~/bash.qndwm/files/packages.txt)
 ### Info
 If there are more then one user on the computer and you want everyone to be able to use the same dwm change the install directory to (/usr/src)
 
-# LazyDWM Installation Process
+# QnDWM Installation Process
   - Clone the repository. . .
 ```bash
 git clone https://github.com/querzion/bash.qndwm.git
