@@ -50,7 +50,7 @@ NC='\033[0m' # No Color
 ############################################################################################################################### DIRECTORIES
 
 USER="$(whoami)"
-BASEDIR="~/bash.qndwm"
+BASEDIR="$HOME/bash.qndwm"
 
 FROM_FONT="$BASEDIR/files/fonts.txt"
 FROM_APP="$BASEDIR/files/app_info.txt"
