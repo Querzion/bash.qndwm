@@ -87,7 +87,7 @@ sudo pacman -S --noconfirm yay paru flatpak
 
 
 # New install script.
-#install_packages() {
+install_packages() {
     while IFS= read -r line; do
         [[ -z "$line" || "$line" =~ ^# ]] && continue
         manager=$(echo "$line" | awk '{print $1}' | tr -d '"')
@@ -104,7 +104,7 @@ sudo pacman -S --noconfirm yay paru flatpak
 }
 
 # Old install script.
-#install_packages() {
+install_packages() {
     while IFS= read -r line; do
         # Skip comments and empty lines
         [[ "$line" =~ ^# || -z "$line" ]] && continue
