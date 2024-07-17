@@ -82,6 +82,34 @@ INSTALL_QnDWM_FILE_DIR="$INSTALL_WM_DIR"
 
 
 ############################################################################################################################### FUNCTION
+################### ENABLE MULTILIB & ARCO MIRRORS
+
+enable_multilib() {
+    local pacman_conf="/etc/pacman.conf"
+    
+    if [ ! -f "$pacman_conf" ]; then
+        echo "Error: $pacman_conf not found."
+        return 1
+    fi
+
+    # Check if the multilib section is already uncommented
+    if grep -q '^\[multilib\]' "$pacman_conf"; then
+        echo "Multilib repository is already enabled."
+        return 0
+    fi
+
+    # Backup the original pacman.conf
+    sudo cp "$pacman_conf" "${pacman_conf}.bak"
+
+    # Uncomment the multilib section
+    sudo sed -i '/#\[multilib\]/{s/^#//;n;s/^#//}' "$pacman_conf"
+
+    echo "Multilib repository has been enabled."
+    return 0
+}
+
+
+############################################################################################################################### FUNCTION
 ################### PREREQUSITES | INSTALLATION OF PACKAGE MANAGERS
 
 install_aur_helper() {
@@ -265,6 +293,12 @@ read_package_list() {
 
 ############################################################################################################################### MAIN FUNCTION
 ################### MAIN LOGIC
+
+# Fast Track mirrors
+sudo pacman-mirrors --fasttrack
+
+# Call the function
+enable_multilib
 
 # Install package managers paru, yay, flatpak.
 install_package_managers

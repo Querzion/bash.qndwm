@@ -50,6 +50,7 @@
 ##### Terminal Emulators
 "pacman" "kitty" # Kitty terminal emulator
 "pacman" "alacritty" # Alacritty terminal emulator
+"pacman" "nnn" # Terminal File Manager
 
 ##### Audio & Multimedia
 "pacman" "pipewire" # PipeWire media server
@@ -114,7 +115,7 @@
 "pacman" "libxi" # XInput library
 "pacman" "libxmu" # Xmu library
 "pacman" "gtk3" # GTK+ 3 toolkit
-"pacman" "qt5-base" # Qt 5 base libraries
+#"pacman" "qt5-base" # Qt 5 base libraries
 #"pacman" "qt6-base" # Qt 6 base libraries
 "pacman" "webkit2gtk" # WebKit2GTK library
 
@@ -127,14 +128,17 @@
 
 ##### Gaming Applications
 "flatpak" "flathub/com.valvesoftware.Steam" # Game platform
-"pacman" "lutris" # Game manager
-#"pacman" "wine" # Windows compatibility layer
-#"pacman" "heroic" # Epic Games launcher
-#"pacman" "proton-ge" # Proton for gaming
+"flatpak" "flathub/net.lutris.Lutris" # Game manager
+"pacman" "wine" # Windows compatibility layer
+"pacman" "wine-tricks" # Wine tweak tool
+"flatpak" "flathub/com.heroicgameslauncher.hgl" # Epic & GOG Games launcher
+"flatpak" "flathub/net.davidotek.pupgui2" # Proton GE for gaming
+"flatpak" "flathub/com.github.Matoking.protontricks" # Proton tweak tool
 #"pacman" "emudeck" # EmuDeck for emulation
 "pacman" "gamescope" # Game session manager
 "pacman" "gamemode" # Gaming performance manager
 "pacman" "mangohud" # Performance overlay
+"flatpak" "flathub/dev.goats.xivlauncher" # Final Fantasy XIV Game Launcher
 
 ##### Streaming Applications
 "flatpak" "flathub/com.obsproject.Studio" # OBS Studio for streaming
@@ -142,6 +146,7 @@
 "flatpak" "flathub/com.discordapp.Discord" # Discord (Flatpak)
 "pacman" "vlc" # VLC media player
 "pacman" "mpv" # MPV media player
+"flatpak "flathub/com.chatterino.chatterino" # Twitch Comments
 
 ##### Miscellaneous
 "pacman" "gucharmap" # Character map
