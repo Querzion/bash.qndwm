@@ -158,8 +158,8 @@ install_flatpak() {
 }
 
 install_package_managers() {
-    install_aur_helper yay
     install_aur_helper paru
+    install_aur_helper yay
     install_flatpak
 }
 

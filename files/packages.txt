@@ -49,8 +49,7 @@
 
 ##### Terminal Emulators
 "pacman" "kitty" # Kitty terminal emulator
-"pacman" "alacritty" # Alacritty terminal emulator
-"pacman" "nnn" # Terminal File Manager
+"pacman" "alacritty" # Alacritty terminal emulato
 
 ##### Audio & Multimedia
 "pacman" "pipewire" # PipeWire media server
