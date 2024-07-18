@@ -1,5 +1,5 @@
 # bash.qndwm Naaah! It's QnDWM. 
-### "QnD Gamesquad" (Quest n Defend|Defeat) is the Discord I have. ( https://discord.gg/RK7GZAs )
+#### "QnD Gamesquad" (Quest n Defend|Defeat) is the Discord I have. ( https://discord.gg/RK7GZAs )
 
   - This is a lazy install script.
 That is intended to be post-installed on Arch, after the alternatively use of the "archinstall" script. 
