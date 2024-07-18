@@ -164,10 +164,10 @@ install_package_managers() {
 }
 
 package_manager_version() {
-    echo -e "${PURPLE}$(pacman --version)${NC}"
-    echo -e "${PURPLE}$(yay --version)${NC}"
-    echo -e "${PURPLE}$(paru --version)${NC}"
-    echo -e "${PURPLE}$(flatpak --version)${NC}"
+    echo -e "${PURPLE}  $(pacman --version)${NC}"
+    echo -e "${PURPLE}  $(yay --version)${NC}"
+    echo -e "${PURPLE}  $(paru --version)${NC}"
+    echo -e "${PURPLE}  $(flatpak --version)${NC}"
 }
 
 ############################################################################################################################### FUNCTION
