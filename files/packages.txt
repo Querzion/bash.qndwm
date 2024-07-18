@@ -147,6 +147,9 @@
 "pacman" "mpv" # MPV media player
 #"flatpak" "flathub/com.chatterino.chatterino" # Twitch Comments Application
 "yay" "chatterino2-git" # Twitch Comments Application
+"yay" "spotify-adblock" # Spotify with adblock
+"yay" "spotify-tui" # Terminal Spotify 
+"yay" "ani-cli" # Animé watch portal
 
 ##### Miscellaneous
 "pacman" "gucharmap" # Character map
