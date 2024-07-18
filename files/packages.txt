@@ -129,7 +129,7 @@
 "flatpak" "flathub/com.valvesoftware.Steam" # Game platform
 "flatpak" "flathub/net.lutris.Lutris" # Game manager
 "pacman" "wine" # Windows compatibility layer
-"pacman" "wine-tricks" # Wine tweak tool
+"yay" "winetricks-git" # Wine tweak tool
 "flatpak" "flathub/com.heroicgameslauncher.hgl" # Epic & GOG Games launcher
 "flatpak" "flathub/net.davidotek.pupgui2" # Proton GE for gaming
 "flatpak" "flathub/com.github.Matoking.protontricks" # Proton tweak tool
@@ -145,7 +145,7 @@
 "flatpak" "flathub/com.discordapp.Discord" # Discord (Flatpak)
 "pacman" "vlc" # VLC media player
 "pacman" "mpv" # MPV media player
-"flatpak "flathub/com.chatterino.chatterino" # Twitch Comments
+"flatpak" "flathub/com.chatterino.chatterino" # Twitch Comments
 
 ##### Miscellaneous
 "pacman" "gucharmap" # Character map
