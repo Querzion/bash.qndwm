@@ -302,6 +302,7 @@ enable_multilib
 
 # Install package managers paru, yay, flatpak.
 install_package_managers
+install_package_managers # to ensure that they are indeed installed
     
 # Check the version of pacman, yay, paru, flatpak
 package_manager_version
