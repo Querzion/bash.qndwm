@@ -145,7 +145,8 @@
 "flatpak" "flathub/com.discordapp.Discord" # Discord (Flatpak)
 "pacman" "vlc" # VLC media player
 "pacman" "mpv" # MPV media player
-"flatpak" "flathub/com.chatterino.chatterino" # Twitch Comments
+#"flatpak" "flathub/com.chatterino.chatterino" # Twitch Comments Application
+"yay" "chatterino2-git" # Twitch Comments Application
 
 ##### Miscellaneous
 "pacman" "gucharmap" # Character map
