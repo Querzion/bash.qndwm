@@ -75,7 +75,7 @@
 "pacman" "samba" # Samba for file sharing
 "pacman" "smbclient" # Samba client utilities
 "pacman" "nfs-utils" # NFS utilities
-"pacman" "ufw" # Uncomplicated Firewall
+#"pacman" "ufw" # Uncomplicated Firewall
 "pacman" "firewalld" # Firewall service
 "pacman" "avahi" # mDNS/DNS-SD daemon
 "pacman" "cifs-utils" # CIFS utilities
